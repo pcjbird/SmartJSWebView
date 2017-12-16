@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		89D2A7AF1FE559B0003A726E /* SmartJSWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = 89D2A7AD1FE559B0003A726E /* SmartJSWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		89D2A7B71FE55A9E003A726E /* SmartJSWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = 89D2A7B61FE55A9E003A726E /* SmartJSWebView.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		89D2A7AA1FE559B0003A726E /* SmartJSWebView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SmartJSWebView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		89D2A7AD1FE559B0003A726E /* SmartJSWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartJSWebView.h; sourceTree = "<group>"; };
 		89D2A7AE1FE559B0003A726E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89D2A7B61FE55A9E003A726E /* SmartJSWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartJSWebView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +46,42 @@
 		89D2A7AC1FE559B0003A726E /* SmartJSWebView */ = {
 			isa = PBXGroup;
 			children = (
-				89D2A7AD1FE559B0003A726E /* SmartJSWebView.h */,
+				89D2A7B51FE55A9E003A726E /* public_headers */,
+				89D2A7B81FE55AB8003A726E /* private_headers */,
+				89D2A7B91FE55AC7003A726E /* source */,
+				89D2A7BA1FE55AD0003A726E /* resource */,
 				89D2A7AE1FE559B0003A726E /* Info.plist */,
 			);
 			path = SmartJSWebView;
+			sourceTree = "<group>";
+		};
+		89D2A7B51FE55A9E003A726E /* public_headers */ = {
+			isa = PBXGroup;
+			children = (
+				89D2A7B61FE55A9E003A726E /* SmartJSWebView.h */,
+			);
+			path = public_headers;
+			sourceTree = "<group>";
+		};
+		89D2A7B81FE55AB8003A726E /* private_headers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = private_headers;
+			sourceTree = "<group>";
+		};
+		89D2A7B91FE55AC7003A726E /* source */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = source;
+			sourceTree = "<group>";
+		};
+		89D2A7BA1FE55AD0003A726E /* resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,7 +91,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89D2A7AF1FE559B0003A726E /* SmartJSWebView.h in Headers */,
+				89D2A7B71FE55A9E003A726E /* SmartJSWebView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,7 +218,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -238,7 +270,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -259,6 +291,7 @@
 				INFOPLIST_FILE = SmartJSWebView/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lessney.SmartJSWebView;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -278,6 +311,7 @@
 				INFOPLIST_FILE = SmartJSWebView/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lessney.SmartJSWebView;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

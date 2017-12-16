@@ -6,18 +6,83 @@
 	objectVersion = 48;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		89D2A7F41FE57C15003A726E /* SmartJSWebView-Universal */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 89D2A7F51FE57C15003A726E /* Build configuration list for PBXAggregateTarget "SmartJSWebView-Universal" */;
+			buildPhases = (
+				89D2A7F81FE57C1B003A726E /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "SmartJSWebView-Universal";
+			productName = "SmartJSWebView-Universal";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		89D2A7B71FE55A9E003A726E /* SmartJSWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = 89D2A7B61FE55A9E003A726E /* SmartJSWebView.h */; };
+		89D2A7B71FE55A9E003A726E /* SmartJSWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = 89D2A7B61FE55A9E003A726E /* SmartJSWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		89D2A7BD1FE55CD7003A726E /* SmartJSWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D2A7BC1FE55CD7003A726E /* SmartJSWebView.m */; };
+		89D2A7C71FE55ECB003A726E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89D2A7C61FE55ECB003A726E /* WebKit.framework */; };
+		89D2A7C91FE563CB003A726E /* SmartJSWebViewProgressDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 89D2A7C81FE560A6003A726E /* SmartJSWebViewProgressDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		89D2A7CB1FE5685A003A726E /* SmartJSBridgeProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 89D2A7CA1FE567FD003A726E /* SmartJSBridgeProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		89D2A7CE1FE56A66003A726E /* SmartJSWebViewProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 89D2A7CC1FE56A66003A726E /* SmartJSWebViewProxy.h */; };
+		89D2A7CF1FE56A66003A726E /* SmartJSWebViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D2A7CD1FE56A66003A726E /* SmartJSWebViewProxy.m */; };
+		89D2A7D31FE5718F003A726E /* NSObject+SmartJSContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 89D2A7D11FE5718F003A726E /* NSObject+SmartJSContext.h */; };
+		89D2A7D41FE5718F003A726E /* NSObject+SmartJSContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D2A7D21FE5718F003A726E /* NSObject+SmartJSContext.m */; };
+		89D2A7D61FE571D7003A726E /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89D2A7D51FE571D7003A726E /* JavaScriptCore.framework */; };
+		89D2A7E71FE57614003A726E /* deferredjs-inject.js in Resources */ = {isa = PBXBuildFile; fileRef = 89D2A7D91FE57548003A726E /* deferredjs-inject.js */; };
+		89D2A7E81FE57617003A726E /* function-inject.js in Resources */ = {isa = PBXBuildFile; fileRef = 89D2A7D81FE57548003A726E /* function-inject.js */; };
+		89D2A7E91FE57619003A726E /* smartjs-inject.js in Resources */ = {isa = PBXBuildFile; fileRef = 89D2A7D71FE57548003A726E /* smartjs-inject.js */; };
+		89D2A7EC1FE5790F003A726E /* SmartJSDataFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = 89D2A7EA1FE5790F003A726E /* SmartJSDataFunction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		89D2A7ED1FE5790F003A726E /* SmartJSDataFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D2A7EB1FE5790F003A726E /* SmartJSDataFunction.m */; };
+		89D2A7F01FE57AED003A726E /* SmartJSWebProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 89D2A7EE1FE57AED003A726E /* SmartJSWebProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		89D2A7F11FE57AED003A726E /* SmartJSWebProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D2A7EF1FE57AED003A726E /* SmartJSWebProgressView.m */; };
+		89D2A7F31FE57BB7003A726E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89D2A7F21FE57BB7003A726E /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		89D2A7AA1FE559B0003A726E /* SmartJSWebView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SmartJSWebView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89D2A7AE1FE559B0003A726E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89D2A7B61FE55A9E003A726E /* SmartJSWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartJSWebView.h; sourceTree = "<group>"; };
+		89D2A7BB1FE55C29003A726E /* SmartJSWebViewDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartJSWebViewDefine.h; sourceTree = "<group>"; };
+		89D2A7BC1FE55CD7003A726E /* SmartJSWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartJSWebView.m; sourceTree = "<group>"; };
+		89D2A7BF1FE55D25003A726E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		89D2A7C01FE55D25003A726E /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
+		89D2A7C31FE55D8F003A726E /* SmartJSWebView.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SmartJSWebView.podspec; sourceTree = SOURCE_ROOT; };
+		89D2A7C61FE55ECB003A726E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		89D2A7C81FE560A6003A726E /* SmartJSWebViewProgressDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartJSWebViewProgressDelegate.h; sourceTree = "<group>"; };
+		89D2A7CA1FE567FD003A726E /* SmartJSBridgeProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartJSBridgeProtocol.h; sourceTree = "<group>"; };
+		89D2A7CC1FE56A66003A726E /* SmartJSWebViewProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartJSWebViewProxy.h; sourceTree = "<group>"; };
+		89D2A7CD1FE56A66003A726E /* SmartJSWebViewProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartJSWebViewProxy.m; sourceTree = "<group>"; };
+		89D2A7D01FE56FC2003A726E /* SmartJSContextDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartJSContextDelegate.h; sourceTree = "<group>"; };
+		89D2A7D11FE5718F003A726E /* NSObject+SmartJSContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+SmartJSContext.h"; sourceTree = "<group>"; };
+		89D2A7D21FE5718F003A726E /* NSObject+SmartJSContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SmartJSContext.m"; sourceTree = "<group>"; };
+		89D2A7D51FE571D7003A726E /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		89D2A7D71FE57548003A726E /* smartjs-inject.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "smartjs-inject.js"; sourceTree = "<group>"; };
+		89D2A7D81FE57548003A726E /* function-inject.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "function-inject.js"; sourceTree = "<group>"; };
+		89D2A7D91FE57548003A726E /* deferredjs-inject.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "deferredjs-inject.js"; sourceTree = "<group>"; };
+		89D2A7E11FE575E5003A726E /* SmartJSWebView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartJSWebView.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		89D2A7E31FE575E5003A726E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89D2A7EA1FE5790F003A726E /* SmartJSDataFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartJSDataFunction.h; sourceTree = "<group>"; };
+		89D2A7EB1FE5790F003A726E /* SmartJSDataFunction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartJSDataFunction.m; sourceTree = "<group>"; };
+		89D2A7EE1FE57AED003A726E /* SmartJSWebProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartJSWebProgressView.h; sourceTree = "<group>"; };
+		89D2A7EF1FE57AED003A726E /* SmartJSWebProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartJSWebProgressView.m; sourceTree = "<group>"; };
+		89D2A7F21FE57BB7003A726E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		89D2A7A61FE559B0003A726E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89D2A7F31FE57BB7003A726E /* QuartzCore.framework in Frameworks */,
+				89D2A7D61FE571D7003A726E /* JavaScriptCore.framework in Frameworks */,
+				89D2A7C71FE55ECB003A726E /* WebKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89D2A7DE1FE575E5003A726E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -31,7 +96,9 @@
 			isa = PBXGroup;
 			children = (
 				89D2A7AC1FE559B0003A726E /* SmartJSWebView */,
+				89D2A7E21FE575E5003A726E /* SmartJSWebViewResource */,
 				89D2A7AB1FE559B0003A726E /* Products */,
+				89D2A7C51FE55ECB003A726E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -39,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				89D2A7AA1FE559B0003A726E /* SmartJSWebView.framework */,
+				89D2A7E11FE575E5003A726E /* SmartJSWebView.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -46,6 +114,7 @@
 		89D2A7AC1FE559B0003A726E /* SmartJSWebView */ = {
 			isa = PBXGroup;
 			children = (
+				89D2A7BE1FE55D00003A726E /* metadata */,
 				89D2A7B51FE55A9E003A726E /* public_headers */,
 				89D2A7B81FE55AB8003A726E /* private_headers */,
 				89D2A7B91FE55AC7003A726E /* source */,
@@ -59,6 +128,11 @@
 			isa = PBXGroup;
 			children = (
 				89D2A7B61FE55A9E003A726E /* SmartJSWebView.h */,
+				89D2A7C81FE560A6003A726E /* SmartJSWebViewProgressDelegate.h */,
+				89D2A7CA1FE567FD003A726E /* SmartJSBridgeProtocol.h */,
+				89D2A7EA1FE5790F003A726E /* SmartJSDataFunction.h */,
+				89D2A7EE1FE57AED003A726E /* SmartJSWebProgressView.h */,
+				89D2A7EF1FE57AED003A726E /* SmartJSWebProgressView.m */,
 			);
 			path = public_headers;
 			sourceTree = "<group>";
@@ -66,6 +140,8 @@
 		89D2A7B81FE55AB8003A726E /* private_headers */ = {
 			isa = PBXGroup;
 			children = (
+				89D2A7BB1FE55C29003A726E /* SmartJSWebViewDefine.h */,
+				89D2A7D01FE56FC2003A726E /* SmartJSContextDelegate.h */,
 			);
 			path = private_headers;
 			sourceTree = "<group>";
@@ -73,6 +149,12 @@
 		89D2A7B91FE55AC7003A726E /* source */ = {
 			isa = PBXGroup;
 			children = (
+				89D2A7BC1FE55CD7003A726E /* SmartJSWebView.m */,
+				89D2A7EB1FE5790F003A726E /* SmartJSDataFunction.m */,
+				89D2A7CC1FE56A66003A726E /* SmartJSWebViewProxy.h */,
+				89D2A7CD1FE56A66003A726E /* SmartJSWebViewProxy.m */,
+				89D2A7D11FE5718F003A726E /* NSObject+SmartJSContext.h */,
+				89D2A7D21FE5718F003A726E /* NSObject+SmartJSContext.m */,
 			);
 			path = source;
 			sourceTree = "<group>";
@@ -80,8 +162,39 @@
 		89D2A7BA1FE55AD0003A726E /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				89D2A7D91FE57548003A726E /* deferredjs-inject.js */,
+				89D2A7D81FE57548003A726E /* function-inject.js */,
+				89D2A7D71FE57548003A726E /* smartjs-inject.js */,
 			);
 			path = resource;
+			sourceTree = "<group>";
+		};
+		89D2A7BE1FE55D00003A726E /* metadata */ = {
+			isa = PBXGroup;
+			children = (
+				89D2A7C31FE55D8F003A726E /* SmartJSWebView.podspec */,
+				89D2A7C01FE55D25003A726E /* LICENSE */,
+				89D2A7BF1FE55D25003A726E /* README.md */,
+			);
+			name = metadata;
+			sourceTree = "<group>";
+		};
+		89D2A7C51FE55ECB003A726E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89D2A7F21FE57BB7003A726E /* QuartzCore.framework */,
+				89D2A7D51FE571D7003A726E /* JavaScriptCore.framework */,
+				89D2A7C61FE55ECB003A726E /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		89D2A7E21FE575E5003A726E /* SmartJSWebViewResource */ = {
+			isa = PBXGroup;
+			children = (
+				89D2A7E31FE575E5003A726E /* Info.plist */,
+			);
+			path = SmartJSWebViewResource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -92,6 +205,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				89D2A7B71FE55A9E003A726E /* SmartJSWebView.h in Headers */,
+				89D2A7D31FE5718F003A726E /* NSObject+SmartJSContext.h in Headers */,
+				89D2A7EC1FE5790F003A726E /* SmartJSDataFunction.h in Headers */,
+				89D2A7F01FE57AED003A726E /* SmartJSWebProgressView.h in Headers */,
+				89D2A7CE1FE56A66003A726E /* SmartJSWebViewProxy.h in Headers */,
+				89D2A7C91FE563CB003A726E /* SmartJSWebViewProgressDelegate.h in Headers */,
+				89D2A7CB1FE5685A003A726E /* SmartJSBridgeProtocol.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +235,23 @@
 			productReference = 89D2A7AA1FE559B0003A726E /* SmartJSWebView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		89D2A7E01FE575E5003A726E /* SmartJSWebViewResource */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89D2A7E41FE575E5003A726E /* Build configuration list for PBXNativeTarget "SmartJSWebViewResource" */;
+			buildPhases = (
+				89D2A7DD1FE575E5003A726E /* Sources */,
+				89D2A7DE1FE575E5003A726E /* Frameworks */,
+				89D2A7DF1FE575E5003A726E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmartJSWebViewResource;
+			productName = SmartJSWebViewResource;
+			productReference = 89D2A7E11FE575E5003A726E /* SmartJSWebView.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -126,6 +262,14 @@
 				ORGANIZATIONNAME = "Zero Status";
 				TargetAttributes = {
 					89D2A7A91FE559B0003A726E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					89D2A7E01FE575E5003A726E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					89D2A7F41FE57C15003A726E = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
@@ -144,6 +288,8 @@
 			projectRoot = "";
 			targets = (
 				89D2A7A91FE559B0003A726E /* SmartJSWebView */,
+				89D2A7E01FE575E5003A726E /* SmartJSWebViewResource */,
+				89D2A7F41FE57C15003A726E /* SmartJSWebView-Universal */,
 			);
 		};
 /* End PBXProject section */
@@ -156,10 +302,48 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		89D2A7DF1FE575E5003A726E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89D2A7E71FE57614003A726E /* deferredjs-inject.js in Resources */,
+				89D2A7E81FE57617003A726E /* function-inject.js in Resources */,
+				89D2A7E91FE57619003A726E /* smartjs-inject.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		89D2A7F81FE57C1B003A726E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FMK_NAME=${PROJECT_NAME}\n\n# Install dir will be the final output to the framework.\n\n# The following line create it in the root folder of the current project.\n\nINSTALL_DIR=${SRCROOT}/products/${FMK_NAME}.framework\n\n# Working dir will be deleted after the framework creation.\n\nWRK_DIR=build\n\nDEVICE_DIR=${WRK_DIR}/Release-iphoneos/${FMK_NAME}.framework\n\nSIMULATOR_DIR=${WRK_DIR}/Release-iphonesimulator/${FMK_NAME}.framework\n\n# -configuration ${CONFIGURATION}\n\n# Clean and Building both architectures.\n\nxcodebuild -project \"${FMK_NAME}\".xcodeproj -scheme \"${FMK_NAME}\" -configuration \"Release\" -sdk iphoneos clean build\n\nxcodebuild -project \"${FMK_NAME}\".xcodeproj -scheme \"${FMK_NAME}\" -configuration \"Release\" -sdk iphonesimulator clean build\n\n# Cleaning the oldest.\n\nif [ -d \"${INSTALL_DIR}\" ]\n\nthen\n\nrm -rf \"${INSTALL_DIR}\"\n\nfi\n\nmkdir -p \"${INSTALL_DIR}\"\n\ncp -R \"${DEVICE_DIR}/\" \"${INSTALL_DIR}/\"\n\n# Uses the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.\n\nlipo -create \"${DEVICE_DIR}/${FMK_NAME}\" \"${SIMULATOR_DIR}/${FMK_NAME}\" -output \"${INSTALL_DIR}/${FMK_NAME}\"\n\nrm -r \"${WRK_DIR}\"\n\n#open \"${INSTALL_DIR}\"\n\n#Resource bundle\nBUNDLE_TARGET_NAME=${FMK_NAME}Resource\nBUNDLEDEVICE_DIR=${WRK_DIR}/Release-iphoneos/${FMK_NAME}.bundle\nINSTALL_BUNDLE_DIR=${SRCROOT}/products/${FMK_NAME}.bundle\n\n#build resource\nxcodebuild -configuration \"Release\" -target \"${BUNDLE_TARGET_NAME}\" -sdk iphoneos clean build\n\nditto \"${BUNDLEDEVICE_DIR}\" \"${INSTALL_BUNDLE_DIR}\"\n\n#rm -f \"${INSTALL_BUNDLE_DIR}\"/info.plist\nrm -f \"${INSTALL_BUNDLE_DIR}/${FMK_NAME}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		89D2A7A51FE559B0003A726E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89D2A7ED1FE5790F003A726E /* SmartJSDataFunction.m in Sources */,
+				89D2A7D41FE5718F003A726E /* NSObject+SmartJSContext.m in Sources */,
+				89D2A7CF1FE56A66003A726E /* SmartJSWebViewProxy.m in Sources */,
+				89D2A7BD1FE55CD7003A726E /* SmartJSWebView.m in Sources */,
+				89D2A7F11FE57AED003A726E /* SmartJSWebProgressView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89D2A7DD1FE575E5003A726E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -292,6 +476,11 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_LDFLAGS = (
+					"-lObjC",
+					"-fembed-bitcode",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lessney.SmartJSWebView;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -312,10 +501,67 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_LDFLAGS = (
+					"-lObjC",
+					"-fembed-bitcode",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lessney.SmartJSWebView;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		89D2A7E51FE575E5003A726E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = SmartJSWebViewResource/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lessney.SmartJSWebViewResource;
+				PRODUCT_NAME = SmartJSWebView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		89D2A7E61FE575E5003A726E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = SmartJSWebViewResource/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lessney.SmartJSWebViewResource;
+				PRODUCT_NAME = SmartJSWebView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		89D2A7F61FE57C15003A726E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		89D2A7F71FE57C15003A726E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -336,6 +582,24 @@
 			buildConfigurations = (
 				89D2A7B31FE559B0003A726E /* Debug */,
 				89D2A7B41FE559B0003A726E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89D2A7E41FE575E5003A726E /* Build configuration list for PBXNativeTarget "SmartJSWebViewResource" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89D2A7E51FE575E5003A726E /* Debug */,
+				89D2A7E61FE575E5003A726E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89D2A7F51FE57C15003A726E /* Build configuration list for PBXAggregateTarget "SmartJSWebView-Universal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89D2A7F61FE57C15003A726E /* Debug */,
+				89D2A7F71FE57C15003A726E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

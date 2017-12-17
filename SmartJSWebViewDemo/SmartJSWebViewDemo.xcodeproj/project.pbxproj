@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		44271409F496E95BE242E616 /* libPods-SmartJSWebViewDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F239387A0BE3DD957CD8491 /* libPods-SmartJSWebViewDemo.a */; };
+		89D2A8071FE63E52003A726E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D2A8061FE63E52003A726E /* AppDelegate.m */; };
+		89D2A80A1FE63E52003A726E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D2A8091FE63E52003A726E /* ViewController.m */; };
+		89D2A80D1FE63E52003A726E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89D2A80B1FE63E52003A726E /* Main.storyboard */; };
+		89D2A80F1FE63E52003A726E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89D2A80E1FE63E52003A726E /* Assets.xcassets */; };
+		89D2A8121FE63E52003A726E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89D2A8101FE63E52003A726E /* LaunchScreen.storyboard */; };
+		89D2A8151FE63E52003A726E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D2A8141FE63E52003A726E /* main.m */; };
+		89D2A8291FE64725003A726E /* floatingconsole in Resources */ = {isa = PBXBuildFile; fileRef = 89D2A8281FE64725003A726E /* floatingconsole */; };
+		89D2A82F1FE653D4003A726E /* WebBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D2A82E1FE653D4003A726E /* WebBridge.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		36A97B5DEFEAE8617D0EC794 /* Pods-SmartJSWebViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartJSWebViewDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartJSWebViewDemo/Pods-SmartJSWebViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		7F239387A0BE3DD957CD8491 /* libPods-SmartJSWebViewDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartJSWebViewDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		89D2A8021FE63E52003A726E /* SmartJSWebViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartJSWebViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		89D2A8051FE63E52003A726E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		89D2A8061FE63E52003A726E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		89D2A8081FE63E52003A726E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		89D2A8091FE63E52003A726E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		89D2A80C1FE63E52003A726E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		89D2A80E1FE63E52003A726E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		89D2A8111FE63E52003A726E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		89D2A8131FE63E52003A726E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89D2A8141FE63E52003A726E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		89D2A8281FE64725003A726E /* floatingconsole */ = {isa = PBXFileReference; lastKnownFileType = folder; path = floatingconsole; sourceTree = "<group>"; };
+		89D2A82C1FE64AD4003A726E /* SmartJSWebViewDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartJSWebViewDemo-Prefix.pch"; sourceTree = "<group>"; };
+		89D2A82D1FE653D4003A726E /* WebBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebBridge.h; sourceTree = "<group>"; };
+		89D2A82E1FE653D4003A726E /* WebBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebBridge.m; sourceTree = "<group>"; };
+		BAAF7BDE399AA038DAAE6FF3 /* Pods-SmartJSWebViewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartJSWebViewDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartJSWebViewDemo/Pods-SmartJSWebViewDemo.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		89D2A7FF1FE63E52003A726E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44271409F496E95BE242E616 /* libPods-SmartJSWebViewDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1D47ABFEC58A4126440E009D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7F239387A0BE3DD957CD8491 /* libPods-SmartJSWebViewDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		89D2A7F91FE63E52003A726E = {
+			isa = PBXGroup;
+			children = (
+				89D2A8041FE63E52003A726E /* SmartJSWebViewDemo */,
+				89D2A8031FE63E52003A726E /* Products */,
+				9324E3265CD9701DFE272927 /* Pods */,
+				1D47ABFEC58A4126440E009D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		89D2A8031FE63E52003A726E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				89D2A8021FE63E52003A726E /* SmartJSWebViewDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		89D2A8041FE63E52003A726E /* SmartJSWebViewDemo */ = {
+			isa = PBXGroup;
+			children = (
+				89D2A8281FE64725003A726E /* floatingconsole */,
+				89D2A8051FE63E52003A726E /* AppDelegate.h */,
+				89D2A8061FE63E52003A726E /* AppDelegate.m */,
+				89D2A8081FE63E52003A726E /* ViewController.h */,
+				89D2A8091FE63E52003A726E /* ViewController.m */,
+				89D2A82D1FE653D4003A726E /* WebBridge.h */,
+				89D2A82E1FE653D4003A726E /* WebBridge.m */,
+				89D2A80B1FE63E52003A726E /* Main.storyboard */,
+				89D2A80E1FE63E52003A726E /* Assets.xcassets */,
+				89D2A8101FE63E52003A726E /* LaunchScreen.storyboard */,
+				89D2A8131FE63E52003A726E /* Info.plist */,
+				89D2A8141FE63E52003A726E /* main.m */,
+				89D2A82C1FE64AD4003A726E /* SmartJSWebViewDemo-Prefix.pch */,
+			);
+			path = SmartJSWebViewDemo;
+			sourceTree = "<group>";
+		};
+		9324E3265CD9701DFE272927 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				36A97B5DEFEAE8617D0EC794 /* Pods-SmartJSWebViewDemo.debug.xcconfig */,
+				BAAF7BDE399AA038DAAE6FF3 /* Pods-SmartJSWebViewDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		89D2A8011FE63E52003A726E /* SmartJSWebViewDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89D2A8181FE63E52003A726E /* Build configuration list for PBXNativeTarget "SmartJSWebViewDemo" */;
+			buildPhases = (
+				A81DC32CA0E49F1A98161938 /* [CP] Check Pods Manifest.lock */,
+				89D2A7FE1FE63E52003A726E /* Sources */,
+				89D2A7FF1FE63E52003A726E /* Frameworks */,
+				89D2A8001FE63E52003A726E /* Resources */,
+				CE1D45B5B0D88294C197AE4F /* [CP] Embed Pods Frameworks */,
+				AD8A06BFF3BA0F408C321486 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmartJSWebViewDemo;
+			productName = SmartJSWebViewDemo;
+			productReference = 89D2A8021FE63E52003A726E /* SmartJSWebViewDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		89D2A7FA1FE63E52003A726E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Zero Status";
+				TargetAttributes = {
+					89D2A8011FE63E52003A726E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 89D2A7FD1FE63E52003A726E /* Build configuration list for PBXProject "SmartJSWebViewDemo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 89D2A7F91FE63E52003A726E;
+			productRefGroup = 89D2A8031FE63E52003A726E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				89D2A8011FE63E52003A726E /* SmartJSWebViewDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		89D2A8001FE63E52003A726E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89D2A8121FE63E52003A726E /* LaunchScreen.storyboard in Resources */,
+				89D2A80F1FE63E52003A726E /* Assets.xcassets in Resources */,
+				89D2A8291FE64725003A726E /* floatingconsole in Resources */,
+				89D2A80D1FE63E52003A726E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A81DC32CA0E49F1A98161938 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SmartJSWebViewDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD8A06BFF3BA0F408C321486 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SmartJSWebViewDemo/Pods-SmartJSWebViewDemo-resources.sh",
+				$PODS_CONFIGURATION_BUILD_DIR/SmartJSWebView/SmartJSWebView.bundle,
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartJSWebViewDemo/Pods-SmartJSWebViewDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE1D45B5B0D88294C197AE4F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SmartJSWebViewDemo/Pods-SmartJSWebViewDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SmartJSWebView/SmartJSWebView.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SmartJSWebView.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartJSWebViewDemo/Pods-SmartJSWebViewDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		89D2A7FE1FE63E52003A726E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89D2A80A1FE63E52003A726E /* ViewController.m in Sources */,
+				89D2A82F1FE653D4003A726E /* WebBridge.m in Sources */,
+				89D2A8151FE63E52003A726E /* main.m in Sources */,
+				89D2A8071FE63E52003A726E /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		89D2A80B1FE63E52003A726E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89D2A80C1FE63E52003A726E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		89D2A8101FE63E52003A726E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89D2A8111FE63E52003A726E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		89D2A8161FE63E52003A726E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		89D2A8171FE63E52003A726E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		89D2A8191FE63E52003A726E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36A97B5DEFEAE8617D0EC794 /* Pods-SmartJSWebViewDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "${SRCROOT}/SmartJSWebViewDemo/SmartJSWebViewDemo-Prefix.pch";
+				INFOPLIST_FILE = SmartJSWebViewDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lessney.SmartJSWebViewDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		89D2A81A1FE63E52003A726E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAAF7BDE399AA038DAAE6FF3 /* Pods-SmartJSWebViewDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "${SRCROOT}/SmartJSWebViewDemo/SmartJSWebViewDemo-Prefix.pch";
+				INFOPLIST_FILE = SmartJSWebViewDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lessney.SmartJSWebViewDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		89D2A7FD1FE63E52003A726E /* Build configuration list for PBXProject "SmartJSWebViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89D2A8161FE63E52003A726E /* Debug */,
+				89D2A8171FE63E52003A726E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89D2A8181FE63E52003A726E /* Build configuration list for PBXNativeTarget "SmartJSWebViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89D2A8191FE63E52003A726E /* Debug */,
+				89D2A81A1FE63E52003A726E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 89D2A7FA1FE63E52003A726E /* Project object */;
+}

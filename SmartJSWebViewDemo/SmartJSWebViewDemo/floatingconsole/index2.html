@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-CA" ng-app="exampleApp">
+<head>
+  <meta charset="utf-8" />
+  <title>SmartJS 调试控制台</title>
+  <meta name="description" content="SmartJS 与 iOS Native 交互调试控制台" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link href="floating-console.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body style="padding-left:10px; padding-top: 10px;">
+  <header style="margin-bottom:10px; margin-right:10px;background-color:#fafbfc;vertical-align:middle;">
+    <span align="center">
+      <h1 style="font-weight:100;text-align=center;">SmartJS 调试控制台2</h1>
+    </span>
+    <div align="center">
+      <a style="text-decoration:none;align=center;" href="">调试利器</a>
+    </div>
+  </header>
+  <img style="position: fixed; top: 0; right: 0; border: 0;" src="mark.png" width="120" height="120" alt="开发专用 请勿下架" data-canonical-src="">
+  <div class="floating-console">
+    <ul class="floating-console_previous-commands">
+      <li class="floating-console_last-command"></li>
+    </ul>
+    <input
+      class="floating-console_command"
+      placeholder="Command + [Enter] to Execute"
+      type="text"/>
+  </div>
+
+  <pre style="margin-top: 40px;">
+  <code>
+    &gt; floatingConsole.trace('输出当前JS日志');
+    * 仅支持命令行窗口调用        
+    
+    &gt; floatingConsole.logtrace('输出当前JS日志');
+    * 支持命令行窗口＋代码调用
+
+
+    &gt; [CTRL] + ARROW UP    : Move window up
+    &gt; [CTRL] + ARROW RIGHT : Move window right
+    &gt; [CTRL] + ARROW DOWN  : Move window down
+    &gt; [CTRL] + ARROW LEFT  : Move window left
+  </code>
+  <button onclick="api.copyToClipboard();" title="复制文字到剪贴板">复制文字到剪贴板(UIWebView + WKWebView)</button>
+  <!--<button onclick="api.setWebViewTitle();" title="">设置网页标题(UIWebView + WKWebView)</button>
+  <button onclick="api.login();" title="">调用登录窗口(UIWebView + WKWebView)</button>
+  <button onclick="api.logout();" title="">调用登出(UIWebView + WKWebView)</button>
+  <button onclick="api.finish();" title="">调用关闭当前网页窗口(UIWebView + WKWebView)</button>
+  <button onclick="api.openInSystemBrowser();" title="">在系统浏览器中打开网页(UIWebView + WKWebView)</button>
+  <button onclick="api.openUrlInNewWindow();" title="">在新窗口中打开网页(UIWebView + WKWebView)</button>
+  <button onclick="api.openQRWindow();" title="">打开二维码扫描界面(UIWebView + WKWebView)</button>
+  <button onclick="api.openCoolMallDetailWindow();" title="">打开酷玩商品详情界面(UIWebView + WKWebView)</button>
+  <button onclick="api.share();" title="">调用分享(UIWebView + WKWebView)</button>
+  <button onclick="api.setShare();" title="">设置分享信息(UIWebView + WKWebView)</button>
+  <button onclick="api.browseArtworkfromIndex();" title="">使用Native浏览指定图片(UIWebView + WKWebView)</button>
+  <button onclick="floatingConsole.logtrace((undefined==window.webkit) ? '获取到的登录身份信息：' + api.getLoginInfo() : '获取到的登录身份信息(异步)：'+ typeof(api.getLoginInfo().done(floatingConsole.logtrace).fail(floatingConsole.logtrace)));" title="测试返回值">获取登录身份信息(UIWebView + WKWebView)</button>
+  <button onclick="floatingConsole.logtrace((undefined==window.webkit) ? '获取到的用户信息：' + api.getUserInfo() : '获取到的用户信息(异步)：'+ typeof(api.getUserInfo().done(floatingConsole.logtrace).fail(floatingConsole.logtrace)));" title="测试返回值">获取用户信息(UIWebView + WKWebView)</button>
+  <button onclick="floatingConsole.logtrace((undefined==window.webkit) ? '获取到的设备信息：' + api.getDeviceInfo() : '获取到的设备信息(异步)：'+ typeof(api.getDeviceInfo().done(floatingConsole.logtrace).fail(floatingConsole.logtrace)));" title="测试返回值">获取设备信息(UIWebView + WKWebView)</button>
+  <button onclick="floatingConsole.logtrace((undefined==window.webkit) ? '获取到的用户行为信息：' + api.getBehaviourInfo() : '获取到的用户行为信息(异步)：'+ typeof(api.getBehaviourInfo().done(floatingConsole.logtrace).fail(floatingConsole.logtrace)));" title="测试返回值">获取用户行为信息(UIWebView + WKWebView)</button>
+  <button onclick="floatingConsole.logtrace((undefined==window.webkit) ? '获取到的协约机授权信息：' + api.getContractAuth() : '获取到的协约机授权信息(异步)：'+ typeof(api.getContractAuth().done(floatingConsole.logtrace).fail(floatingConsole.logtrace)));" title="测试返回值">获取协约机授权信息(UIWebView + WKWebView)</button>
+  <button onclick="floatingConsole.logtrace((undefined==window.webkit) ? '获取到的连接网络类型信息：' + api.getNetStatus() : '获取到的连接网络类型信息(异步)：'+ typeof(api.getNetStatus().done(floatingConsole.logtrace).fail(floatingConsole.logtrace)));" title="测试返回值">获取连接网络类型信息(UIWebView + WKWebView)</button>
+  <button onclick="floatingConsole.logtrace((undefined==window.webkit) ? '获取到的网络环境信息：' + api.getNetEnv() : '获取到的网络环境信息(异步)：'+ typeof(api.getNetEnv().done(floatingConsole.logtrace).fail(floatingConsole.logtrace)));" title="测试返回值">获取网络环境信息(UIWebView + WKWebView)</button>
+  <button onclick="api.chooseContact(function (data){floatingConsole.logtrace('获取到的联系人信息：' + data);return data;});" title="测试返回值">选取联系人(UIWebView + WKWebView)</button>
+  <button onclick="api.snailpayAction();" title="">调用支付(UIWebView + WKWebView)</button>
+  <button onclick="api.openFaceDetect();" title="">调用人脸识别(UIWebView + WKWebView)</button>
+  
+
+  尝试长按以下二维码：
+  <img src="http://www.lessney.com/wp-content/uploads/2015/07/weichat.png" width="90%" />
+  -->
+  <button onclick="window.history.back();" title="">返回上一页面</button>
+  </pre>
+  <div class="global_info">
+  </div>
+  <script src="floatingConsole.js"></script>
+  <script src="api-debug.js"></script>
+  <script>
+    floatingConsole.initialize();
+  </script>
+</body>
+<script>
+    function showglobalinfo()
+    {
+        var global_info = document.querySelector(".global_info");
+        var global_text =  '<p><span style="color: blue;">user_agent</span>：' + window.navigator.userAgent.replace(/(FreeStoreMuch|FreeStoreAndroid|FreeStoreIOS|FreeStoreGame)/i,'<span style="color:red;">$1</span>') + '</p>';
+        global_text +=  '<p><span style="color: blue;">cookie</span>：' + document.cookie + '</p>';
+        global_text += '<br>';
+        global_text += '<p><span style="color: blue;">SmartJSDemoInterface</span>：' + String(window.SmartJSDemoInterface) + '</p>';
+        if(window.SmartJSDemoInterface)
+        {
+          var jsObj = window.SmartJSDemoInterface;
+          for (var sProp in jsObj) 
+          {
+            global_text += '<p>&nbsp;&nbsp;&nbsp;&nbsp;SmartJSDemoInterface.' + String(sProp) + '</p>';
+          }
+        }
+        global_text += '<p><span style="color: blue;">floatingConsole</span>：' + String(window.floatingConsole) + '</p>';
+        global_text += '<p><span style="color: blue;">api</span>：' + String(window.api) + '</p>';
+        if(window.api)
+        {
+          var jsObj = window.api;
+          for (var sProp in jsObj) 
+          {
+            global_text += '<p>&nbsp;&nbsp;&nbsp;&nbsp;api.' + String(sProp) + '</p>';
+          }
+        }
+
+        global_text +=  '<h2>本地存储</h2>';
+
+        if(window.localStorage)
+        {
+            global_text += '<p style="color:green;">已经开启 本地存储</p>';
+        }
+        else
+        {
+            global_text += '<p style="color:red;">没开启本地存储</p>';
+        }
+
+        if(window.localStorage){
+            var key = window.localStorage.getItem('key') || 0;
+            window.localStorage.setItem('key_' + key,new Date().toString());
+            global_text += '<p>长度:' + localStorage.length + ':' + 'key_' + key + '</p>';
+            for(var i=0;i<=key;i+=1){
+                global_text += '<p>[key_' + i + ']' + localStorage.getItem('key_' + i) + "</p>";
+            }
+            key = Math.min(Number(key) + 1,2);
+            window.localStorage.setItem('key',key);
+        }
+
+        global_info.innerHTML = global_text;
+
+    }
+    window.onload = setTimeout(showglobalinfo,1000);
+</script>
+</html>

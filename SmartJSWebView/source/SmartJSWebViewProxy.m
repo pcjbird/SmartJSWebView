@@ -640,7 +640,11 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
 - (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView {
     if(self.realDelegate && [self.realDelegate respondsToSelector:@selector(webViewWebContentProcessDidTerminate:)])
     {
-        [self.realDelegate webViewWebContentProcessDidTerminate:webView];
+        if([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0)
+        {
+            [self.realDelegate webViewWebContentProcessDidTerminate:webView];
+        }
+        
     }
 }
 
@@ -648,7 +652,10 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
 - (void)webViewDidClose:(WKWebView *)webView {
     if(self.realDelegate && [self.realDelegate respondsToSelector:@selector(webViewDidClose:)])
     {
-        [self.realDelegate webViewDidClose:webView];
+        if([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0)
+        {
+          [self.realDelegate webViewDidClose:webView];
+        }
     }
 }
 

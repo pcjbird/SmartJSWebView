@@ -22,6 +22,6 @@ Pod::Spec.new do |s|
     #s.dependency ''
 
     s.requires_arc = true
-    s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC' }
+    s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC', 'MACH_O_TYPE' => 'staticlib' }
 
 end

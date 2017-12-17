@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
     s.name         = 'SmartJSWebView'
     s.summary      = '支持 H5 页面通过 JavaScript 与 Native App 交互的 WebView，兼容 UIWebView 和 WKWebView。'
-    s.version      = '1.0.0'
+    s.version      = '1.0.1'
     s.license      = { :type => 'MIT', :file => 'LICENSE' }
     s.authors      = { 'pcjbird' => 'pcjbird@hotmail.com' }
     s.social_media_url = 'http://www.lessney.com'
@@ -22,6 +22,6 @@ Pod::Spec.new do |s|
     #s.dependency ''
 
     s.requires_arc = true
-    s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC', 'MACH_O_TYPE' => 'staticlib' }
+    s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC' }
 
 end

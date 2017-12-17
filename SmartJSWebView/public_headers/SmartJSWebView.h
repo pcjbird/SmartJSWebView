@@ -9,7 +9,7 @@
 //  框架功能:支持 H5 页面通过 JavaScript 与 Native App 交互的 WebView，兼容 UIWebView 和 WKWebView。
 //  修改记录:
 //     pcjbird    2017-12-16  Version:1.0.1 Build:201712170001
-//                            1.恢复 Pod 编译选项，启用静态库编译
+//                            1.恢复 Pod 编译选项，弃用静态库编译
 //                            2.新增 Demo 项目
 //     pcjbird    2017-12-16  Version:1.0.0 Build:201712160001
 //                            1.首次发布SDK版本

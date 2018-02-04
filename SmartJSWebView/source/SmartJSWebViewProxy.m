@@ -148,6 +148,11 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
         [injection appendString:key];
         [injection appendString:@"\", ["];
         
+        [injection appendString:@"\""];
+        [injection appendString:@"createSecretId"];
+        [injection appendString:@"\""];
+        [injection appendString:@", "];
+        
         unsigned int mc = 0;
         Class cls = object_getClass(interface);
         Method * mlist = class_copyMethodList(cls, &mc);

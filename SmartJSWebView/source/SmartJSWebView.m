@@ -10,7 +10,9 @@
 #import "SmartJSWebViewProxy.h"
 
 @interface SmartJSWebView()
-
+{
+    NSString*   _loadurl;
+}
 @property (nonatomic, strong) SmartJSWebViewProxy* proxy;
 
 @end
@@ -22,6 +24,7 @@
     self = [super init];
     if (self)
     {
+        _loadurl = nil;
         _preferWKWebView = NO;
         self.webView = [self createRealWebView];
         [self initEasyJS];
@@ -34,6 +37,7 @@
     self = [super initWithFrame:frame];
     if (self)
     {
+        _loadurl = nil;
         _preferWKWebView = NO;
         self.webView = [self createRealWebView];
         [self initEasyJS];
@@ -46,6 +50,7 @@
     self = [super initWithCoder:aDecoder];
     if (self)
     {
+        _loadurl = nil;
         _preferWKWebView = NO;
         self.webView = [self createRealWebView];
         [self initEasyJS];
@@ -138,6 +143,7 @@
     {
         pageURL = [pageURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     }
+    
     NSURL *url = [NSURL URLWithString:pageURL];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: url];
@@ -150,6 +156,7 @@
     {
         [(WKWebView*)self.webView loadRequest:request];
     }
+    _loadurl = pageURL;
 }
 
 -(void)loadRequest:(NSURLRequest*)request
@@ -161,6 +168,11 @@
     else if([self.webView isKindOfClass:[WKWebView class]])
     {
         [(WKWebView*)self.webView loadRequest:request];
+    }
+    
+    if(![[self class] isStringBlank:[request URL].absoluteString])
+    {
+        _loadurl = [request URL].absoluteString;
     }
 }
 
@@ -370,13 +382,23 @@
         NSString *urlString = [self.webView stringByEvaluatingJavaScriptFromString:@"location.href"];
         if (urlString)
         {
+            if([urlString isEqualToString:@"about:blank"] && _loadurl)
+            {
+                return [NSURL URLWithString:_loadurl];
+            }
             return [NSURL URLWithString:urlString];
         }
         return nil;
     }
     else
     {
-        return [self.webView URL];
+        NSURL *url = [self.webView URL];
+        NSString *urlString = [url absoluteString];
+        if(urlString && [urlString isEqualToString:@"about:blank"] && _loadurl)
+        {
+            return [NSURL URLWithString:_loadurl];
+        }
+        return url;
     }
 }
 

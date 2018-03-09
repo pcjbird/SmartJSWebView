@@ -57,7 +57,7 @@ call: function (obj, functionName, args){
     if(undefined == target)
     {
         var iframe = document.createElement("IFRAME");
-        iframe.setAttribute("src", "easy-js:" + obj + ":" + encodeURIComponent(functionName) + argStr);
+        iframe.setAttribute("src", "smart-js:" + obj + ":" + encodeURIComponent(functionName) + argStr);
         document.documentElement.appendChild(iframe);
         iframe.parentNode.removeChild(iframe);
         iframe = null;

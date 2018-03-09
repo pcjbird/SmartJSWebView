@@ -56,7 +56,7 @@
     _preferWKWebView = NO;
     _useWhitelist = NO;
     self.webView = [self createRealWebView];
-    [self initEasyJS];
+    [self initSmartJS];
 }
 
 -(void)dealloc
@@ -118,7 +118,7 @@
             [self.webView removeFromSuperview];
         }
         self.webView = [self createRealWebView];
-        [self initEasyJS];
+        [self initSmartJS];
     }
 }
 
@@ -320,7 +320,7 @@
     }
 }
 
-- (void) initEasyJS{
+- (void) initSmartJS{
     self.proxy = [SmartJSWebViewProxy new];
     self.delegate = self.proxy;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCreateJavaScriptContext:) name:@"SmartJSWebViewCreateJavascriptContextNotification" object:nil];

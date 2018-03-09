@@ -291,7 +291,7 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
     
     NSString *requestString = [[request URL] absoluteString];
     
-    if ([requestString hasPrefix:@"easy-js:"]) {
+    if ([requestString hasPrefix:@"smart-js:"]) {
         BOOL isSafe = YES;
         if(_useWhitelist)
         {
@@ -307,8 +307,8 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
         if(!isSafe) return NO;
         /*
          A sample URL structure:
-         easy-js:MyJSTest:test
-         easy-js:MyJSTest:testWithParam%3A:haha
+         smart-js:MyJSTest:test
+         smart-js:MyJSTest:testWithParam%3A:haha
          */
         NSArray *components = [requestString componentsSeparatedByString:@":"];
         //NSLog(@"req: %@", requestString);

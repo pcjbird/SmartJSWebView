@@ -54,7 +54,6 @@
 {
     _loadurl = nil;
     _preferWKWebView = NO;
-    _useWhitelist = NO;
     self.webView = [self createRealWebView];
     [self initSmartJS];
 }
@@ -133,23 +132,6 @@
             __weak typeof (self) weakSelf = self;
             [interfaceProtocol registerWebView:weakSelf];
         }
-    }
-}
-
--(void)setWhitelist:(NSArray<NSString *> *)hostlist
-{
-    if(self.proxy)
-    {
-        [self.proxy setWhitelist:hostlist active:_useWhitelist];
-    }
-}
-
--(void)setUseWhitelist:(BOOL)useWhitelist
-{
-    if(self.proxy)
-    {
-        _useWhitelist = useWhitelist;
-        [self.proxy setUseWhitelist:useWhitelist];
     }
 }
 
@@ -341,10 +323,12 @@
                     [(id<SmartJSContextDelegate>)self.proxy webView:self.webView didCreateJavaScriptContext:jsContext];
                 }
             }
+#if DEBUG
             else
             {
                 NSLog(@"JavaScript contexts are different");
             }
+#endif
         }
     }
 }
@@ -373,9 +357,21 @@
 
 -(void)setProgressDelegate:(id<SmartJSWebViewProgressDelegate>)progressDelegate
 {
-    [self.proxy setProgressDelegate:progressDelegate];
+    if(self.proxy)
+    {
+        [self.proxy setProgressDelegate:progressDelegate];
+    }
     _progressDelegate = progressDelegate;
 }
+
+-(void)setSecurityProxy:(id<SmartJSWebSecurityProxy>)securityProxy
+{
+    if(self.proxy)
+    {
+        [self.proxy setSecurityProxy:securityProxy];
+    }
+}
+
 
 
 - (NSString*) title

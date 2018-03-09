@@ -10,15 +10,15 @@
 #import <WebKit/WebKit.h>
 #import "SmartJSContextDelegate.h"
 #import "SmartJSWebViewProgressDelegate.h"
+#import "SmartJSWebSecurityProxy.h"
 
 @interface SmartJSWebViewProxy : NSObject<UIWebViewDelegate,WKScriptMessageHandler, WKNavigationDelegate, WKUIDelegate,SmartJSContextDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary* _Nullable javascriptInterfaces;
 @property (nullable, nonatomic, weak) id<UIWebViewDelegate, WKNavigationDelegate, WKUIDelegate> realDelegate;
 @property (nullable, nonatomic, weak) id<SmartJSWebViewProgressDelegate> progressDelegate;
+@property (nullable, nonatomic, weak) id<SmartJSWebSecurityProxy> securityProxy;
 
--(void)setWhitelist:(NSArray<NSString*>*)hostlist active:(BOOL)active;
--(void)setUseWhitelist:(BOOL)useWhitelist;
 
 - (void) injectUserScript:(WKWebView*_Nonnull)webView;
 - (void) addJavascriptInterfaces:(NSObject*_Nonnull) interface WithName:(NSString*_Nonnull) name;

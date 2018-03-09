@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		89723E202052E1C800B558DB /* SmartJSWebSecurityProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 89723E1F2052DF7300B558DB /* SmartJSWebSecurityProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		89D2A7B71FE55A9E003A726E /* SmartJSWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = 89D2A7B61FE55A9E003A726E /* SmartJSWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		89D2A7BD1FE55CD7003A726E /* SmartJSWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D2A7BC1FE55CD7003A726E /* SmartJSWebView.m */; };
 		89D2A7C71FE55ECB003A726E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89D2A7C61FE55ECB003A726E /* WebKit.framework */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		89723E1F2052DF7300B558DB /* SmartJSWebSecurityProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartJSWebSecurityProxy.h; sourceTree = "<group>"; };
 		89D2A7AA1FE559B0003A726E /* SmartJSWebView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SmartJSWebView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89D2A7AE1FE559B0003A726E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89D2A7B61FE55A9E003A726E /* SmartJSWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartJSWebView.h; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				89D2A7B61FE55A9E003A726E /* SmartJSWebView.h */,
 				89D2A7C81FE560A6003A726E /* SmartJSWebViewProgressDelegate.h */,
 				89D2A7CA1FE567FD003A726E /* SmartJSBridgeProtocol.h */,
+				89723E1F2052DF7300B558DB /* SmartJSWebSecurityProxy.h */,
 				89D2A7EA1FE5790F003A726E /* SmartJSDataFunction.h */,
 				89D2A7EE1FE57AED003A726E /* SmartJSWebProgressView.h */,
 				89D2A7EF1FE57AED003A726E /* SmartJSWebProgressView.m */,
@@ -208,6 +211,7 @@
 				89D2A7D31FE5718F003A726E /* NSObject+SmartJSContext.h in Headers */,
 				89D2A7EC1FE5790F003A726E /* SmartJSDataFunction.h in Headers */,
 				89D2A7F01FE57AED003A726E /* SmartJSWebProgressView.h in Headers */,
+				89723E202052E1C800B558DB /* SmartJSWebSecurityProxy.h in Headers */,
 				89D2A7CE1FE56A66003A726E /* SmartJSWebViewProxy.h in Headers */,
 				89D2A7C91FE563CB003A726E /* SmartJSWebViewProgressDelegate.h in Headers */,
 				89D2A7CB1FE5685A003A726E /* SmartJSBridgeProtocol.h in Headers */,

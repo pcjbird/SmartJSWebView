@@ -8,8 +8,9 @@
 //  框架名称:SmartJSWebView
 //  框架功能:支持 H5 页面通过 JavaScript 与 Native App 交互的 WebView，兼容 UIWebView 和 WKWebView。
 //  修改记录:
-//     pcjbird    2018-03-09  Version:1.0.6 Build:201803090002
+//     pcjbird    2018-03-10  Version:1.0.6 Build:201803100001
 //                            1.调整命名
+//                            2.修改白名单提供方式
 //
 //     pcjbird    2018-03-09  Version:1.0.5 Build:201803090001
 //                            1.新增白名单功能
@@ -43,8 +44,10 @@ FOUNDATION_EXPORT const unsigned char SmartJSWebViewVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <SmartJSWebView/PublicHeader.h>
 #import <SmartJSWebView/SmartJSWebViewProgressDelegate.h>
 #import <SmartJSWebView/SmartJSBridgeProtocol.h>
+#import <SmartJSWebView/SmartJSWebSecurityProxy.h>
 #import <SmartJSWebView/SmartJSDataFunction.h>
 #import <SmartJSWebView/SmartJSWebProgressView.h>
+
 
 @interface SmartJSWebView : UIView
 
@@ -68,15 +71,10 @@ FOUNDATION_EXPORT const unsigned char SmartJSWebViewVersionString[];
  */
 @property(nonatomic, assign) BOOL preferWKWebView;
 
-/*!
- *  A Boolean val indicate whether use whitelist.
- */
-@property(nonatomic, assign) BOOL useWhitelist;
 
 @property (nullable, nonatomic, weak) id<UIWebViewDelegate, WKNavigationDelegate, WKUIDelegate> delegate;
 @property (nullable, nonatomic, weak) id<SmartJSWebViewProgressDelegate> progressDelegate;
-
--(void)setWhitelist:(nonnull NSArray<NSString*>*)hostlist;
+@property (nullable, nonatomic, weak) id<SmartJSWebSecurityProxy> securityProxy;
 
 -(void)loadPage:(nonnull NSString *)pageURL;
 

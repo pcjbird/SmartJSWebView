@@ -25,7 +25,9 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
     NSURL *_currentURL;
     BOOL _interactive;
     float _progress;
+    BOOL _useWhitelist;
 }
+@property(nonatomic, strong) NSArray<NSString*>* whitelist;
 @end
 
 @implementation SmartJSWebViewProxy
@@ -38,11 +40,17 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
 {
     self = [super init];
     if (self) {
-        _maxLoadCount = _loadingCount = 0;
-        _interactive = NO;
+        [self initVariables];
     }
-    
     return self;
+}
+
+-(void)initVariables
+{
+    _maxLoadCount = _loadingCount = 0;
+    _interactive = NO;
+    _useWhitelist = NO;
+    self.whitelist = nil;
 }
 
 - (void)startProgress
@@ -120,6 +128,35 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
     NSString * smartjs = [NSString stringWithContentsOfFile:[SDK_BUNDLE pathForResource:@"smartjs-inject" ofType:@"js"] encoding:NSUTF8StringEncoding error:nil];
     WKUserScript *userScript = [[WKUserScript alloc] initWithSource:smartjs injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:true];
     [webView.configuration.userContentController addUserScript:userScript];
+}
+
+-(void)setWhitelist:(NSArray<NSString*>*)hostlist active:(BOOL)active
+{
+    _useWhitelist = active;
+    if(_useWhitelist)
+    {
+        if([hostlist isKindOfClass:[NSArray<NSString*> class]])
+        {
+            self.whitelist = [NSArray arrayWithArray:hostlist];
+        }
+        else
+        {
+            self.whitelist = [NSArray array];
+        }
+    }
+    else
+    {
+        self.whitelist = nil;
+    }
+}
+
+-(void)setUseWhitelist:(BOOL)useWhitelist
+{
+    _useWhitelist = useWhitelist;
+    if(_useWhitelist)
+    {
+        if(!self.whitelist) self.whitelist = [NSArray array];
+    }
 }
 
 #pragma mark - SmartJSContextDelegate
@@ -255,6 +292,19 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
     NSString *requestString = [[request URL] absoluteString];
     
     if ([requestString hasPrefix:@"easy-js:"]) {
+        BOOL isSafe = YES;
+        if(_useWhitelist)
+        {
+            NSString *host = request.mainDocumentURL.host;
+            if([host isKindOfClass:[NSString class]])
+            {
+                if(![self.whitelist containsObject:host])
+                {
+                    isSafe = NO;
+                }
+            }
+        }
+        if(!isSafe) return NO;
         /*
          A sample URL structure:
          easy-js:MyJSTest:test
@@ -397,6 +447,19 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
     
     if ([message.name isEqualToString:@"SmartJS"])
     {
+        BOOL isSafe = YES;
+        if(_useWhitelist)
+        {
+            NSString *host = message.webView.URL.host;
+            if([host isKindOfClass:[NSString class]])
+            {
+                if(![self.whitelist containsObject:host])
+                {
+                    isSafe = NO;
+                }
+            }
+        }
+        if(!isSafe) return;
         NSDictionary *body = message.body;
         if([body isKindOfClass:[NSDictionary class]])
         {

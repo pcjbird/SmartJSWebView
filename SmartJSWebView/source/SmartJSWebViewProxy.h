@@ -17,6 +17,9 @@
 @property (nullable, nonatomic, weak) id<UIWebViewDelegate, WKNavigationDelegate, WKUIDelegate> realDelegate;
 @property (nullable, nonatomic, weak) id<SmartJSWebViewProgressDelegate> progressDelegate;
 
+-(void)setWhitelist:(NSArray<NSString*>*)hostlist active:(BOOL)active;
+-(void)setUseWhitelist:(BOOL)useWhitelist;
+
 - (void) injectUserScript:(WKWebView*_Nonnull)webView;
 - (void) addJavascriptInterfaces:(NSObject*_Nonnull) interface WithName:(NSString*_Nonnull) name;
 

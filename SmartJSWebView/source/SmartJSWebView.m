@@ -24,10 +24,7 @@
     self = [super init];
     if (self)
     {
-        _loadurl = nil;
-        _preferWKWebView = NO;
-        self.webView = [self createRealWebView];
-        [self initEasyJS];
+        [self initVariables];
     }
     return self;
 }
@@ -37,10 +34,7 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        _loadurl = nil;
-        _preferWKWebView = NO;
-        self.webView = [self createRealWebView];
-        [self initEasyJS];
+        [self initVariables];
     }
     return self;
 }
@@ -50,13 +44,19 @@
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        _loadurl = nil;
-        _preferWKWebView = NO;
-        self.webView = [self createRealWebView];
-        [self initEasyJS];
+        [self initVariables];
     }
     
     return self;
+}
+
+-(void) initVariables
+{
+    _loadurl = nil;
+    _preferWKWebView = NO;
+    _useWhitelist = NO;
+    self.webView = [self createRealWebView];
+    [self initEasyJS];
 }
 
 -(void)dealloc
@@ -133,6 +133,23 @@
             __weak typeof (self) weakSelf = self;
             [interfaceProtocol registerWebView:weakSelf];
         }
+    }
+}
+
+-(void)setWhitelist:(NSArray<NSString *> *)hostlist
+{
+    if(self.proxy)
+    {
+        [self.proxy setWhitelist:hostlist active:_useWhitelist];
+    }
+}
+
+-(void)setUseWhitelist:(BOOL)useWhitelist
+{
+    if(self.proxy)
+    {
+        _useWhitelist = useWhitelist;
+        [self.proxy setUseWhitelist:useWhitelist];
     }
 }
 

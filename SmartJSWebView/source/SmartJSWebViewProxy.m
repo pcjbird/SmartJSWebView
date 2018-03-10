@@ -178,6 +178,36 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
     [webView stringByEvaluatingJavaScriptFromString:injection];
 }
 
+#pragma mark - 判断域名是否在白名单中
+-(BOOL) isHost:(NSString*)host inWhitelist:(NSArray<NSString*>*)whitelist
+{
+    __block BOOL result = NO;
+    if([host isKindOfClass:[NSString class]] && [whitelist isKindOfClass:[NSArray<NSString*> class]])
+    {
+        [whitelist enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0f)
+            {
+                if([host containsString:obj])
+                {
+                    result = YES;
+                    *stop = YES;
+                }
+            }
+            else
+            {
+                NSRange range = [host rangeOfString:obj];
+                if(range.location != NSNotFound && range.length > 0)
+                {
+                    result = YES;
+                    *stop = YES;
+                }
+            }
+            
+        }];
+    }
+    return result;
+}
+
 #pragma mark - UIWebViewDelegate
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
@@ -262,13 +292,13 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
         BOOL isSafe = YES;
         if(self.securityProxy && [self.securityProxy conformsToProtocol:@protocol(SmartJSWebSecurityProxy)])
         {
-            BOOL useWhiteList = [self.securityProxy shouldSmartJSWebViewUseSecurityWhitelist:[webView superview]];
+            BOOL useWhiteList = [self.securityProxy shouldSmartJSWebViewUseSecurityWhitelist:(SmartJSWebView*)[webView superview]];
             if(useWhiteList)
             {
                 NSArray<NSString*> *whitelist = nil;
                 if([self.securityProxy respondsToSelector:@selector(securityWhitelistForWebView:)])
                 {
-                    whitelist = [self.securityProxy securityWhitelistForWebView:[webView superview]];
+                    whitelist = [self.securityProxy securityWhitelistForWebView:(SmartJSWebView*)[webView superview]];
                 }
                 if(![whitelist isKindOfClass:[NSArray<NSString *> class]])
                 {
@@ -277,14 +307,20 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
                 NSString *host = request.mainDocumentURL.host;
                 if([host isKindOfClass:[NSString class]])
                 {
-                    if(![whitelist containsObject:host])
+                    if(![self isHost:host inWhitelist:whitelist])
                     {
                         isSafe = NO;
                     }
                 }
             }
         }
-        if(!isSafe) return NO;
+        if(!isSafe)
+        {
+#if DEBUG
+            NSLog(@"域名%@不在白名单中，无法通过 JavaScript 与 Native App 交互。", request.mainDocumentURL.host);
+#endif
+            return NO;
+        }
         /*
          A sample URL structure:
          smart-js:MyJSTest:test
@@ -445,14 +481,20 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
                 NSString *host = message.webView.URL.host;
                 if([host isKindOfClass:[NSString class]])
                 {
-                    if(![whitelist containsObject:host])
+                    if(![self isHost:host inWhitelist:whitelist])
                     {
                         isSafe = NO;
                     }
                 }
             }
         }
-        if(!isSafe) return;
+        if(!isSafe)
+        {
+#if DEBUG
+            NSLog(@"域名%@不在白名单中，无法通过 JavaScript 与 Native App 交互。", message.webView.URL.host);
+#endif
+            return;
+        }
         NSDictionary *body = message.body;
         if([body isKindOfClass:[NSDictionary class]])
         {
@@ -703,7 +745,11 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
     {
         if([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0)
         {
-            [self.realDelegate webViewWebContentProcessDidTerminate:webView];
+            if (@available(iOS 9.0, *)) {
+                [self.realDelegate webViewWebContentProcessDidTerminate:webView];
+            } else {
+                // Fallback on earlier versions
+            }
         }
         
     }
@@ -715,7 +761,11 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
     {
         if([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0)
         {
-          [self.realDelegate webViewDidClose:webView];
+            if (@available(iOS 9.0, *)) {
+                [self.realDelegate webViewDidClose:webView];
+            } else {
+                // Fallback on earlier versions
+            }
         }
     }
 }

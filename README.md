@@ -11,13 +11,13 @@
 
 ## 特性 / Features
 
-1.支持 H5 页面通过 JavaScript 与 Native App 交互。    
-2.兼容 UIWebView 和 WKWebView。   
-3.安全策略，支持设置白名单功能。    
-4.页面重定向后依然可以调用到 Native 方法，不含私有API，实测通过 AppStore 审核。    
-5.在[EasyJSWebView](https://github.com/dukeland/EasyJSWebView)基础上编写，功能更强大。    
-6.更多可能，JS调用路由框架封装，详见[QuickWebKit](https://github.com/pcjbird/QuickWebViewController)的QuickWebJSBridgePlugin插件，已实现多个 proxies。    
-7.支持 CocoaPods 安装。
+1. 支持 H5 页面通过 JavaScript 与 Native App 交互。    
+2. 兼容 UIWebView 和 WKWebView。   
+3. 安全策略，支持设置白名单功能。    
+4. 页面重定向后依然可以调用到 Native 方法，不含私有API，实测通过 AppStore 审核。    
+5. 在[EasyJSWebView](https://github.com/dukeland/EasyJSWebView)基础上编写，功能更强大。    
+6. 更多可能，JS调用路由框架封装，详见[QuickWebKit](https://github.com/pcjbird/QuickWebViewController)的QuickWebJSBridgePlugin插件，已实现多个 proxies。    
+7. 支持 CocoaPods 安装。
 
 ## 演示 / Demo
 
@@ -32,9 +32,7 @@ pod 'SmartJSWebView'
 ```
 
 ## 使用 / Usage
-  
 *  [Demo项目](https://github.com/pcjbird/SmartJSWebView/tree/master/SmartJSWebViewDemo)
-
 *  [测试页面地址](https://pcjbird.github.io/SmartJSWebView//SmartJSWebViewDemo/SmartJSWebViewDemo/floatingconsole/index.html)
 
 ## 关注我们 / Follow us

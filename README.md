@@ -33,7 +33,7 @@ pod 'SmartJSWebView'
 
 ## 使用 / Usage
 *  [Demo项目](https://github.com/pcjbird/SmartJSWebView/tree/master/SmartJSWebViewDemo)
-*  [测试页面地址](https://pcjbird.github.io/SmartJSWebView//SmartJSWebViewDemo/SmartJSWebViewDemo/floatingconsole/index.html)
+*  [测试页面地址](https://pcjbird.github.io/SmartJSWebView/SmartJSWebViewDemo/SmartJSWebViewDemo/floatingconsole/index.html)
 
 ## 关注我们 / Follow us
   

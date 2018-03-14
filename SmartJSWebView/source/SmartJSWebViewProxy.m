@@ -268,6 +268,9 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
+    SmartJSWebView* jsWebView = (SmartJSWebView*)[webView superview];
+    if(![jsWebView isKindOfClass:[SmartJSWebView class]]) return NO;
+    
     if ([self checkIfRPCURL:request]) {
         return NO;
     }
@@ -316,9 +319,8 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
         }
         if(!isSafe)
         {
-#if DEBUG
-            NSLog(@"域名%@不在白名单中，无法通过 JavaScript 与 Native App 交互。", request.mainDocumentURL.host);
-#endif
+            NSString *log = [NSString stringWithFormat:@"当前已启用安全策略，域名 %@ 无法通过 JavaScript 与 Native App 交互，请向管理员申请权限。", request.mainDocumentURL.host];
+            [jsWebView tracewarning:log];
             return NO;
         }
         /*
@@ -334,21 +336,28 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
                             stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         
         NSObject* interface = [javascriptInterfaces objectForKey:obj];
-        if (!interface) return NO;
+        if (!interface)
+        {
+            NSString *errorString = [NSString stringWithFormat:@"当前并未提供Javascript Interface:%@ 的调用。", obj];
+            [jsWebView traceerror:errorString];
+            return NO;
+        }
         if([method isEqualToString:@"createSecretId"])
         {
-            if([[webView superview] isKindOfClass:[SmartJSWebView class]])
-            {
-                NSString *secretId = ((SmartJSWebView*)[webView superview]).secretId;
-                [(SmartJSWebView*)[webView superview] evaluateJavaScript:[NSString stringWithFormat:@"SmartJS.retValue=\"%@\";", secretId] completionHandler:nil];
-            }
+            NSString *secretId = jsWebView.secretId;
+            [jsWebView evaluateJavaScript:[NSString stringWithFormat:@"SmartJS.retValue=\"%@\";", secretId] completionHandler:nil];
             
             return NO;
         }
         // execute the interfacing method
         SEL selector = NSSelectorFromString(method);
         NSMethodSignature* sig = [[interface class] instanceMethodSignatureForSelector:selector];
-        if (!sig) return NO;
+        if (!sig)
+        {
+            NSString *errorString = [NSString stringWithFormat:@"Javascript Interface:%@ 并未提供 %@ 的调用。", obj, method];
+            [jsWebView traceerror:errorString];
+            return NO;
+        }
         NSInvocation* invoker = [NSInvocation invocationWithMethodSignature:sig];
         invoker.selector = selector;
         invoker.target = interface;
@@ -461,6 +470,9 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
     //所传过来的参数message.body，只支持NSNumber, NSString, NSDate, NSArray, NSDictionary, and NSNull类型
     
+    SmartJSWebView *jsWebView = (SmartJSWebView*)[message.webView superview];
+    if(![jsWebView isKindOfClass:[SmartJSWebView class]]) return;
+    
     if ([message.name isEqualToString:@"SmartJS"])
     {
         BOOL isSafe = YES;
@@ -490,9 +502,8 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
         }
         if(!isSafe)
         {
-#if DEBUG
-            NSLog(@"域名%@不在白名单中，无法通过 JavaScript 与 Native App 交互。", message.webView.URL.host);
-#endif
+            NSString *log = [NSString stringWithFormat:@"当前已启用安全策略，域名 %@ 无法通过 JavaScript 与 Native App 交互，请向管理员申请权限。", message.webView.URL.host];
+            [jsWebView tracewarning:log];
             return;
         }
         NSDictionary *body = message.body;
@@ -506,21 +517,29 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
             NSString* method = [encodedfun stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             
             NSObject* interface = [self.javascriptInterfaces objectForKey:obj];
-            if (![interface isKindOfClass:[NSObject class]]) return;
+            if (![interface isKindOfClass:[NSObject class]])
+            {
+                NSString *errorString = [NSString stringWithFormat:@"当前并未提供Javascript Interface:%@ 的调用。", obj];
+                [jsWebView traceerror:errorString];
+                return;
+            }
+            
             if([method isEqualToString:@"createSecretId"])
             {
-                if([[message.webView superview] isKindOfClass:[SmartJSWebView class]])
-                {
-                    NSString *secretId = ((SmartJSWebView*)[message.webView superview]).secretId;
-                    [(SmartJSWebView*)[message.webView superview] evaluateJavaScript:[NSString stringWithFormat:@"SmartJS.retValue=%@;", secretId] completionHandler:nil];
-                }
+                NSString *secretId = jsWebView.secretId;
+                [jsWebView evaluateJavaScript:[NSString stringWithFormat:@"SmartJS.retValue=%@;", secretId] completionHandler:nil];
                 
                 return;
             }
             // execute the interfacing method
             SEL selector = NSSelectorFromString(method);
             NSMethodSignature* sig = [[interface class] instanceMethodSignatureForSelector:selector];
-            if (![sig isKindOfClass:[NSMethodSignature class]]) return;
+            if (![sig isKindOfClass:[NSMethodSignature class]])
+            {
+                NSString *errorString = [NSString stringWithFormat:@"Javascript Interface:%@ 并未提供 %@ 的调用。", obj, method];
+                [jsWebView traceerror:errorString];
+                return;
+            }
             NSInvocation* invoker = [NSInvocation invocationWithMethodSignature:sig];
             invoker.selector = selector;
             invoker.target = interface;

@@ -8,6 +8,9 @@
 //  框架名称:SmartJSWebView
 //  框架功能:支持 H5 页面通过 JavaScript 与 Native App 交互的 WebView，兼容 UIWebView 和 WKWebView。
 //  修改记录:
+//     pcjbird    2018-03-14  Version:1.0.8 Build:201803140001
+//                            1.新增浏览器控制台日志打印功能
+//
 //     pcjbird    2018-03-10  Version:1.0.7 Build:201803100002
 //                            1.修改白名单域名匹配规则
 //
@@ -54,50 +57,96 @@ FOUNDATION_EXPORT const unsigned char SmartJSWebViewVersionString[];
 
 @interface SmartJSWebView : UIView
 
-/*!
- * The webview unique secret id
+/**
+ *@brief The webview unique secret id, webview 唯一标识
  */
 @property(nonnull, nonatomic, strong, readonly)NSString* secretId;
 
-/*!
- *  The real webview object.
+/**
+ *@brief  The real webview object. 实际webview。(UIWebView/WKWebView)
  */
 @property(nonnull, nonatomic, strong) id webView;
 
-/*!
- *  The scrollview of the real webview.
+/**
+ *@brief  The scrollview of the real webview.
  */
 @property(nullable, nonatomic, readonly, weak) UIScrollView* scrollView;
 
-/*!
- *  A Boolean val indicate whether prefer to user WKWebView when it is available.
+/**
+ *@brief  A Boolean val indicate whether prefer to user WKWebView when it is available.
  */
 @property(nonatomic, assign) BOOL preferWKWebView;
 
-
+/**
+ *@brief  代理
+ */
 @property (nullable, nonatomic, weak) id<UIWebViewDelegate, WKNavigationDelegate, WKUIDelegate> delegate;
+
+/**
+ *@brief  进度条代理
+ */
 @property (nullable, nonatomic, weak) id<SmartJSWebViewProgressDelegate> progressDelegate;
+
+/**
+ *@brief  安全代理
+ */
 @property (nullable, nonatomic, weak) id<SmartJSWebSecurityProxy> securityProxy;
 
+/**
+ *@brief  加载页面
+ *@param pageURL 页面URL地址
+ */
 -(void)loadPage:(nonnull NSString *)pageURL;
 
+/**
+ *@brief  加载请求
+ *@param request 请求
+ */
 -(void)loadRequest:(nonnull NSURLRequest*)request;
 
+/**
+ *@brief  加载本地html内容
+ *@param string html内容
+ *@param baseURL base url地址
+ */
 - (void)loadHTMLString:(nullable NSString *)string baseURL:(nullable NSURL *)baseURL;
 
-
+/**
+ *@brief  返回之前的页面
+ */
 - (void)goBack;
 
+/**
+ *@brief  前进
+ */
 - (void)goForward;
 
+/**
+ *@brief  重新加载
+ */
 - (void)reload;
 
+/**
+ *@brief  停止加载
+ */
 - (void)stopLoading;
 
+/**
+ *@brief  是否能够回退
+ *@return YES 可以回退， NO 不可以回退
+ */
 - (BOOL) canGoBack;
 
+/**
+ *@brief  是否能够前进
+ *@return YES 可以前进， NO 不可以前进
+ */
 - (BOOL) canGoForward;
 
+/**
+ *@brief  是否正在加载
+ *@return YES 正在加载， NO 非正在加载
+ */
 - (BOOL) isLoading;
 
 
@@ -116,6 +165,29 @@ FOUNDATION_EXPORT const unsigned char SmartJSWebViewVersionString[];
  */
 - (nullable NSURL*) url;
 
+/**
+ *@brief  执行javascript脚本
+ *@param javaScriptString js脚本
+ *@param completionHandler 完成处理
+ */
 - (void)evaluateJavaScript:(nonnull NSString *)javaScriptString completionHandler:(void (^_Nullable)(id _Nullable result, NSError * _Nullable error))completionHandler;
+
+/**
+ *@brief  在浏览器控制台打印日志
+ *@param log 日志内容
+ */
+- (void)tracelog:(nonnull NSString*) log;
+
+/**
+ *@brief  在浏览器控制台打印警告日志
+ *@param log 日志内容
+ */
+- (void)tracewarning:(nonnull NSString*) log;
+
+/**
+ *@brief  在浏览器控制台打印错误日志
+ *@param log 日志内容
+ */
+- (void)traceerror:(nonnull NSString*) log;
 
 @end

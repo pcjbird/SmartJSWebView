@@ -8,6 +8,7 @@
 
 #import "SmartJSWebView.h"
 #import "SmartJSWebViewProxy.h"
+#import "SmartJSWebViewDefine.h"
 
 @interface SmartJSWebView()
 {
@@ -426,15 +427,39 @@
 
 - (void)evaluateJavaScript:(NSString *)javaScriptString completionHandler:(void (^)(id result, NSError *error))completionHandler
 {
-    if([self.webView isKindOfClass:[UIWebView class]])
-    {
-        NSString* res = [(UIWebView*)self.webView stringByEvaluatingJavaScriptFromString:javaScriptString];
-        if(completionHandler) completionHandler(res, nil);
-    }
-    else if([self.webView isKindOfClass:[WKWebView class]])
-    {
-        [(WKWebView*)self.webView evaluateJavaScript:javaScriptString completionHandler:completionHandler];
-    }
+    __weak typeof (self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if([weakSelf.webView isKindOfClass:[UIWebView class]])
+        {
+            NSString* res = [(UIWebView*)weakSelf.webView stringByEvaluatingJavaScriptFromString:javaScriptString];
+            if(completionHandler) completionHandler(res, nil);
+        }
+        else if([weakSelf.webView isKindOfClass:[WKWebView class]])
+        {
+            [(WKWebView*)weakSelf.webView evaluateJavaScript:javaScriptString completionHandler:completionHandler];
+        }
+    });
+}
+
+- (void)tracelog:(nonnull NSString*) log
+{
+    NSString *javascript = [NSString stringWithFormat:@"console.log('%%c %@','%@');", APP_LOG_FORMAT(@"%@", log), @"color:#000000"];
+    [self evaluateJavaScript:javascript completionHandler:nil];
+    SDK_LOG(@"%@",log);
+}
+
+- (void)tracewarning:(nonnull NSString*) log
+{
+    NSString *javascript = [NSString stringWithFormat:@"console.log('%%c %@','%@');", APP_LOG_FORMAT(@"%@", log), @"color:#FFC645"];
+    [self evaluateJavaScript:javascript completionHandler:nil];
+    SDK_LOG(@"%@",log);
+}
+
+- (void)traceerror:(nonnull NSString*) log
+{
+    NSString *javascript = [NSString stringWithFormat:@"console.log('%%c %@','%@');", APP_LOG_FORMAT(@"%@", log), @"color:#FF0000"];
+    [self evaluateJavaScript:javascript completionHandler:nil];
+    SDK_LOG(@"%@",log);
 }
 
 -(NSString*)createSecretId

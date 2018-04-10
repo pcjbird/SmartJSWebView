@@ -176,6 +176,11 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
     }
     //inject the function interface
     [webView stringByEvaluatingJavaScriptFromString:injection];
+    
+    if(self.realDelegate && [self.realDelegate respondsToSelector:@selector(webView:didCreateJavaScriptContext:)])
+    {
+        [self.realDelegate webView:webView didCreateJavaScriptContext:ctx];
+    }
 }
 
 #pragma mark - 判断域名是否在白名单中

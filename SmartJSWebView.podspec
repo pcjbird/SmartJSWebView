@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
     s.description      = <<-DESC
     支持 H5 页面通过 JavaScript 与 Native App 交互的 WebView，兼容 UIWebView 和 WKWebView，支持白名单功能。
     DESC
-    s.version      = '1.0.9'
+    s.version      = '1.1.0'
     s.license      = { :type => 'MIT', :file => 'LICENSE' }
     s.authors      = { 'pcjbird' => 'pcjbird@hotmail.com' }
     s.social_media_url = 'http://www.lessney.com'

@@ -334,7 +334,7 @@
     }
 }
 
--(void)setDelegate:(id<UIWebViewDelegate,WKScriptMessageHandler,WKNavigationDelegate,WKUIDelegate>)delegate
+-(void)setDelegate:(id<UIWebViewDelegate,WKScriptMessageHandler,WKNavigationDelegate,WKUIDelegate,SmartJSContextDelegate>)delegate
 {
     if (delegate != self.proxy)
     {

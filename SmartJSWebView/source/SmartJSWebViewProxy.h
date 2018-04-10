@@ -15,7 +15,7 @@
 @interface SmartJSWebViewProxy : NSObject<UIWebViewDelegate,WKScriptMessageHandler, WKNavigationDelegate, WKUIDelegate,SmartJSContextDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary* _Nullable javascriptInterfaces;
-@property (nullable, nonatomic, weak) id<UIWebViewDelegate, WKNavigationDelegate, WKUIDelegate> realDelegate;
+@property (nullable, nonatomic, weak) id<UIWebViewDelegate, WKNavigationDelegate, WKUIDelegate,SmartJSContextDelegate> realDelegate;
 @property (nullable, nonatomic, weak) id<SmartJSWebViewProgressDelegate> progressDelegate;
 @property (nullable, nonatomic, weak) id<SmartJSWebSecurityProxy> securityProxy;
 

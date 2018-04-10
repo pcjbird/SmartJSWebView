@@ -4,7 +4,10 @@
 [![Pod Platform](http://img.shields.io/cocoapods/p/SmartJSWebView.svg?style=flat)](http://cocoadocs.org/docsets/SmartJSWebView/)
 [![Pod License](http://img.shields.io/cocoapods/l/SmartJSWebView.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
 [![CocoaPods](https://img.shields.io/cocoapods/at/SmartJSWebView.svg)](https://github.com/pcjbird/SmartJSWebView)
+[![CocoaPods](https://img.shields.io/cocoapods/dt/SmartJSWebView.svg)](https://github.com/pcjbird/SmartJSWebView)
 [![GitHub release](https://img.shields.io/github/release/pcjbird/SmartJSWebView.svg)](https://github.com/pcjbird/SmartJSWebView/releases)
+[![GitHub release](https://img.shields.io/github/release-date/pcjbird/SmartJSWebView.svg)](https://github.com/pcjbird/SmartJSWebView/releases)
+[![Website](https://img.shields.io/website-pcjbird-down-green-red/https/shields.io.svg?label=author)](https://pcjbird.github.io)
 
 # SmartJSWebView
 ### 支持 H5 页面通过 JavaScript 与 Native App 交互的 WebView，兼容 UIWebView 和 WKWebView，支持白名单功能。

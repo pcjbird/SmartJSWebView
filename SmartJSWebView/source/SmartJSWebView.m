@@ -336,6 +336,7 @@
 
 -(void)setDelegate:(id<UIWebViewDelegate,WKScriptMessageHandler,WKNavigationDelegate,WKUIDelegate,SmartJSContextDelegate>)delegate
 {
+    if(_delegate == delegate) return;
     if (delegate != self.proxy)
     {
         self.proxy.realDelegate = delegate;
@@ -349,6 +350,7 @@
     {
         [(WKWebView*)self.webView setNavigationDelegate:self.proxy];
         [(WKWebView*)self.webView setUIDelegate:self.proxy];
+        [((WKWebView*)self.webView).configuration.userContentController removeScriptMessageHandlerForName:@"SmartJS"];
         [((WKWebView*)self.webView).configuration.userContentController addScriptMessageHandler:self.proxy name:@"SmartJS"];
         [self.proxy injectUserScript:self.webView];
         [((WKWebView*)self.webView) addObserver:self.proxy forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:NULL];

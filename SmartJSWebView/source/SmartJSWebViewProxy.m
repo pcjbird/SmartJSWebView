@@ -443,6 +443,7 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
             {
                 [webView stringByEvaluatingJavaScriptFromString:@"SmartJS.retValue=\"notsupport\";"];
             }
+            free(_retValue);
         }
         
         return NO;
@@ -631,6 +632,7 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
                 {
                     [message.webView evaluateJavaScript:@"SmartJS.asyncCallback(\"%@\", \"success\", [\"notsupport\"]);" completionHandler:nil];
                 }
+                free(_retValue);
             }
         }
     }

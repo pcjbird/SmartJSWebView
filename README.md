@@ -10,7 +10,7 @@
 [![Website](https://img.shields.io/website-pcjbird-down-green-red/https/shields.io.svg?label=author)](https://pcjbird.github.io)
 
 # SmartJSWebView
-### 支持 H5 页面通过 JavaScript 与 Native App 交互的 WebView，支持白名单功能。
+### 支持 H5 页面通过 JavaScript 与 Native App 交互的 WebView，支持白名单功能。从 2.0.0 开始不再支持 UIWebView。
 
 ## 特性 / Features
 

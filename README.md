@@ -10,17 +10,16 @@
 [![Website](https://img.shields.io/website-pcjbird-down-green-red/https/shields.io.svg?label=author)](https://pcjbird.github.io)
 
 # SmartJSWebView
-### 支持 H5 页面通过 JavaScript 与 Native App 交互的 WebView，兼容 UIWebView 和 WKWebView，支持白名单功能。
+### 支持 H5 页面通过 JavaScript 与 Native App 交互的 WebView，支持白名单功能。
 
 ## 特性 / Features
 
-1. 支持 H5 页面通过 JavaScript 与 Native App 交互。    
-2. 兼容 UIWebView 和 WKWebView。   
-3. 安全策略，支持设置白名单功能。    
-4. 页面重定向后依然可以调用到 Native 方法，不含私有 API，实测通过 AppStore 审核。    
-5. 在 [EasyJSWebView](https://github.com/dukeland/EasyJSWebView) 基础上编写，功能更强大。    
-6. 更多可能，JS调用路由框架封装，详见 [QuickWebKit](https://github.com/pcjbird/QuickWebViewController) 的 QuickWebJSBridgePlugin 插件，已实现多个 proxies。    
-7. 支持 CocoaPods 安装。
+1. 支持 H5 页面通过 JavaScript 与 Native App 交互。      
+2. 安全策略，支持设置白名单功能。    
+3. 页面重定向后依然可以调用到 Native 方法，不含私有 API，实测通过 AppStore 审核。    
+4. 在 [EasyJSWebView](https://github.com/dukeland/EasyJSWebView) 基础上编写，功能更强大。    
+5. 更多可能，JS调用路由框架封装，详见 [QuickWebKit](https://github.com/pcjbird/QuickWebViewController) 的 QuickWebJSBridgePlugin 插件，已实现多个 proxies。    
+6. 支持 CocoaPods 安装。
 
 ## 演示 / Demo
 

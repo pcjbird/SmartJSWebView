@@ -14,7 +14,7 @@
 @protocol SmartJSContextDelegate <NSObject>
 
 @optional
-- (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext*) ctx;
+
 @end
 
 #endif /* SmartJSContextDelegate_h */

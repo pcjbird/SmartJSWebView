@@ -6,8 +6,11 @@
 //  Copyright © 2017年 Zero Status. All rights reserved.
 //
 //  框架名称:SmartJSWebView
-//  框架功能:支持 H5 页面通过 JavaScript 与 Native App 交互的 WebView，兼容 UIWebView 和 WKWebView。
+//  框架功能:支持 H5 页面通过 JavaScript 与 Native App 交互的 WebView。
 //  修改记录:
+//     pcjbird    2020-03-02  Version:2.0.0 Build:202003020001
+//                            1.remove UIWebView
+//
 //     pcjbird    2018-11-29  Version:1.1.3 Build:201811290002
 //                            1.make code more safe
 //
@@ -79,7 +82,7 @@ FOUNDATION_EXPORT const unsigned char SmartJSWebViewVersionString[];
 @property(nonnull, nonatomic, strong, readonly)NSString* secretId;
 
 /**
- *@brief  The real webview object. 实际webview。(UIWebView/WKWebView)
+ *@brief  The real webview object. 实际webview。(WKWebView)
  */
 @property(nonnull, nonatomic, strong) id webView;
 
@@ -89,14 +92,9 @@ FOUNDATION_EXPORT const unsigned char SmartJSWebViewVersionString[];
 @property(nullable, nonatomic, readonly, weak) UIScrollView* scrollView;
 
 /**
- *@brief  A Boolean val indicate whether prefer to user WKWebView when it is available.
- */
-@property(nonatomic, assign) BOOL preferWKWebView;
-
-/**
  *@brief  代理
  */
-@property (nullable, nonatomic, weak) id<UIWebViewDelegate, WKNavigationDelegate, WKUIDelegate,SmartJSContextDelegate> delegate;
+@property (nullable, nonatomic, weak) id<WKNavigationDelegate, WKUIDelegate,SmartJSContextDelegate> delegate;
 
 /**
  *@brief  进度条代理

@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
     s.name         = 'SmartJSWebView'
-    s.summary      = '支持 H5 页面通过 JavaScript 与 Native App 交互的 WebView，兼容 UIWebView 和 WKWebView。'
+    s.summary      = '支持 H5 页面通过 JavaScript 与 Native App 交互的 WebView。'
     s.description      = <<-DESC
-    支持 H5 页面通过 JavaScript 与 Native App 交互的 WebView，兼容 UIWebView 和 WKWebView，支持白名单功能。
+    支持 H5 页面通过 JavaScript 与 Native App 交互的 WebView，支持白名单功能。
     DESC
-    s.version      = '1.1.3'
+    s.version      = '2.0.0'
     s.license      = { :type => 'MIT', :file => 'LICENSE' }
     s.authors      = { 'pcjbird' => 'pcjbird@hotmail.com' }
     s.social_media_url = 'http://www.lessney.com'

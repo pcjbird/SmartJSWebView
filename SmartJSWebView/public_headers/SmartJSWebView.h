@@ -8,6 +8,9 @@
 //  框架名称:SmartJSWebView
 //  框架功能:支持 H5 页面通过 JavaScript 与 Native App 交互的 WebView。
 //  修改记录:
+//     pcjbird    2020-03-11  Version:2.0.1 Build:202003110001
+//                            1.make code more safe
+//
 //     pcjbird    2020-03-02  Version:2.0.0 Build:202003020001
 //                            1.remove UIWebView
 //

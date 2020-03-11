@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		892973AC24190B61008768E2 /* NSObject+SmartJSSafeKVO.h in Headers */ = {isa = PBXBuildFile; fileRef = 892973AA24190B61008768E2 /* NSObject+SmartJSSafeKVO.h */; };
+		892973AD24190B61008768E2 /* NSObject+SmartJSSafeKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 892973AB24190B61008768E2 /* NSObject+SmartJSSafeKVO.m */; };
 		89723E202052E1C800B558DB /* SmartJSWebSecurityProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 89723E1F2052DF7300B558DB /* SmartJSWebSecurityProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		898DB544207CB50700637345 /* SmartJSContextDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 89D2A7D01FE56FC2003A726E /* SmartJSContextDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		89D2A7B71FE55A9E003A726E /* SmartJSWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = 89D2A7B61FE55A9E003A726E /* SmartJSWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -44,6 +46,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		892973AA24190B61008768E2 /* NSObject+SmartJSSafeKVO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+SmartJSSafeKVO.h"; sourceTree = "<group>"; };
+		892973AB24190B61008768E2 /* NSObject+SmartJSSafeKVO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SmartJSSafeKVO.m"; sourceTree = "<group>"; };
 		89723E1F2052DF7300B558DB /* SmartJSWebSecurityProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartJSWebSecurityProxy.h; sourceTree = "<group>"; };
 		89D2A7AA1FE559B0003A726E /* SmartJSWebView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SmartJSWebView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89D2A7AE1FE559B0003A726E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 				89D2A7CD1FE56A66003A726E /* SmartJSWebViewProxy.m */,
 				89D2A7D11FE5718F003A726E /* NSObject+SmartJSContext.h */,
 				89D2A7D21FE5718F003A726E /* NSObject+SmartJSContext.m */,
+				892973AA24190B61008768E2 /* NSObject+SmartJSSafeKVO.h */,
+				892973AB24190B61008768E2 /* NSObject+SmartJSSafeKVO.m */,
 			);
 			path = source;
 			sourceTree = "<group>";
@@ -211,6 +217,7 @@
 				89D2A7B71FE55A9E003A726E /* SmartJSWebView.h in Headers */,
 				89D2A7D31FE5718F003A726E /* NSObject+SmartJSContext.h in Headers */,
 				89D2A7EC1FE5790F003A726E /* SmartJSDataFunction.h in Headers */,
+				892973AC24190B61008768E2 /* NSObject+SmartJSSafeKVO.h in Headers */,
 				89D2A7F01FE57AED003A726E /* SmartJSWebProgressView.h in Headers */,
 				89723E202052E1C800B558DB /* SmartJSWebSecurityProxy.h in Headers */,
 				89D2A7CE1FE56A66003A726E /* SmartJSWebViewProxy.h in Headers */,
@@ -345,6 +352,7 @@
 				89D2A7D41FE5718F003A726E /* NSObject+SmartJSContext.m in Sources */,
 				89D2A7CF1FE56A66003A726E /* SmartJSWebViewProxy.m in Sources */,
 				89D2A7BD1FE55CD7003A726E /* SmartJSWebView.m in Sources */,
+				892973AD24190B61008768E2 /* NSObject+SmartJSSafeKVO.m in Sources */,
 				89D2A7F11FE57AED003A726E /* SmartJSWebProgressView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,6 +482,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 202003110001;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -482,6 +491,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
+				MARKETING_VERSION = 2.0.1;
 				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = (
 					"-lObjC",
@@ -499,6 +509,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 202003110001;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -507,6 +518,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
+				MARKETING_VERSION = 2.0.1;
 				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = (
 					"-lObjC",
@@ -525,10 +537,12 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 202003110001;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SmartJSWebViewResource/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lessney.SmartJSWebViewResource;
 				PRODUCT_NAME = SmartJSWebView;
 				SDKROOT = iphoneos;
@@ -543,10 +557,12 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 202003110001;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SmartJSWebViewResource/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lessney.SmartJSWebViewResource;
 				PRODUCT_NAME = SmartJSWebView;
 				SDKROOT = iphoneos;

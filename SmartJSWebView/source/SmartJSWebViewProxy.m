@@ -322,18 +322,6 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
     }
 }
 
-#pragma mark - KVO
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"estimatedProgress"])
-    {
-        WKWebView *webView = object;
-        if([webView isKindOfClass:[WKWebView class]])
-        {
-            [self setProgress:webView.estimatedProgress];
-        }
-    }
-}
-
 #pragma mark - WKNavigationDelegate
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     

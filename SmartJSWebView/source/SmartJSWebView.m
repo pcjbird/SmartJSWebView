@@ -9,6 +9,7 @@
 #import "SmartJSWebView.h"
 #import "SmartJSWebViewProxy.h"
 #import "SmartJSWebViewDefine.h"
+#import "NSObject+SmartJSSafeKVO.h"
 
 @interface SmartJSWebView()
 {
@@ -60,9 +61,9 @@
 
 -(void)dealloc
 {
-    if([self.webView isKindOfClass:[WKWebView class]] && self.proxy)
+    if([self.webView isKindOfClass:[WKWebView class]])
     {
-        [((WKWebView*)self.webView) removeObserver:self.proxy forKeyPath:@"estimatedProgress"];
+        [((WKWebView*)self.webView) wvsafe_removeObserver:self forKeyPath:@"estimatedProgress"];
     }
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -205,7 +206,7 @@
     [((WKWebView*)self.webView).configuration.userContentController removeScriptMessageHandlerForName:@"SmartJS"];
     [((WKWebView*)self.webView).configuration.userContentController addScriptMessageHandler:self.proxy name:@"SmartJS"];
     [self.proxy injectUserScript:self.webView];
-    [((WKWebView*)self.webView) addObserver:self.proxy forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:NULL];
+    [((WKWebView*)self.webView) wvsafe_addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:NULL];
 
     _delegate = delegate;
 }
@@ -313,6 +314,18 @@
         }
     }
     return NO;
+}
+
+#pragma mark - KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"estimatedProgress"])
+    {
+        WKWebView *webView = object;
+        if([webView isKindOfClass:[WKWebView class]] && self.proxy)
+        {
+            [self.proxy setProgress:webView.estimatedProgress];
+        }
+    }
 }
 
 @end

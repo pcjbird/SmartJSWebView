@@ -365,14 +365,6 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
 }
 
 - (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation {
-    if(self.realDelegate && [self.realDelegate respondsToSelector:@selector(webView:didCommitNavigation:)])
-    {
-        [self.realDelegate webView:webView didCommitNavigation:navigation];
-    }
-    
-}
-
-- (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
     if (! self.javascriptInterfaces){
         self.javascriptInterfaces = [[NSMutableDictionary alloc] init];
     }
@@ -409,7 +401,14 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
     [webView evaluateJavaScript:injection completionHandler:^(id _Nullable result, NSError * _Nullable error) {
         
     }];
+    if(self.realDelegate && [self.realDelegate respondsToSelector:@selector(webView:didCommitNavigation:)])
+    {
+        [self.realDelegate webView:webView didCommitNavigation:navigation];
+    }
     
+}
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
     if(self.realDelegate && [self.realDelegate respondsToSelector:@selector(webView:didFinishNavigation:)])
     {
         [self.realDelegate webView:webView didFinishNavigation:navigation];

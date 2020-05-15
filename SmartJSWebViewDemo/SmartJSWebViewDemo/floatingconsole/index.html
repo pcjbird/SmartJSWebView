@@ -42,6 +42,7 @@
     &gt; [CTRL] + ARROW LEFT  : Move window left
   </code>
   <button onclick="api.copyToClipboard();" title="复制文字到剪贴板">复制文字到剪贴板(UIWebView + WKWebView)</button>
+  <button onclick="createSecretId();" title="创建secretId">创建secretId(UIWebView + WKWebView)</button>
   <!--<button onclick="api.setWebViewTitle();" title="">设置网页标题(UIWebView + WKWebView)</button>
   <button onclick="api.login();" title="">调用登录窗口(UIWebView + WKWebView)</button>
   <button onclick="api.logout();" title="">调用登出(UIWebView + WKWebView)</button>
@@ -77,6 +78,30 @@
   <script src="api-debug.js"></script>
   <script>
     floatingConsole.initialize();
+    
+    function Toast(msg,duration){
+      duration=isNaN(duration)?3000:duration;
+      var m = document.createElement('div');
+      m.innerHTML = msg;
+      m.style.cssText="max-width:60%;min-width: 150px;padding:0 14px;height: 40px;color: rgb(255, 255, 255);line-height: 40px;text-align: center;border-radius: 4px;position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index: 999999;background: rgba(0, 0, 0,.7);font-size: 16px;";
+      document.body.appendChild(m);
+      setTimeout(function() {
+        var d = 0.5;
+        m.style.webkitTransition = '-webkit-transform ' + d + 's ease-in, opacity ' + d + 's ease-in';
+        m.style.opacity = '0';
+        setTimeout(function() { document.body.removeChild(m) }, d * 1000);
+      }, duration);
+    }
+  
+  function createSecretId() {
+      window.SmartJSDemoInterface.createSecretId()
+      .done(function(item){
+          Toast(item, 2000);
+      })
+      .fail(function(){
+          Toast("调用失败", 2000);
+      });
+  }
   </script>
 </body>
 <script>

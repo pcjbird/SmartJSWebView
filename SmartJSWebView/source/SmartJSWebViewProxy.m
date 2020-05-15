@@ -217,8 +217,7 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
             if([method isEqualToString:@"createSecretId"])
             {
                 NSString *secretId = jsWebView.secretId;
-                [jsWebView evaluateJavaScript:[NSString stringWithFormat:@"SmartJS.retValue=%@;", secretId] completionHandler:nil];
-                
+                [message.webView evaluateJavaScript:[NSString stringWithFormat:@"SmartJS.asyncCallback(\"%@\", \"success\", [\"%@\"]);", callbackID, secretId] completionHandler:nil];
                 return;
             }
             // execute the interfacing method
@@ -236,7 +235,7 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
             
             NSMutableArray* args = [[NSMutableArray alloc] init];
             
-            NSString *argStr = [body objectForKey:@"argument"];
+            NSString *argStr = [body objectForKey:@"arguments"];
             if([argStr isKindOfClass:[NSString class]] && [argStr length] > 0)
             {
                 NSString *argsAsString = [[argStr substringFromIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];

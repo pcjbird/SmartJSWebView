@@ -18,6 +18,35 @@ static const float SmartJSWebViewProgressInitialValue = 0.7f;
 static const float SmartJSWebViewProgressInteractiveValue = 0.9f;
 static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
 
+@interface NSHTTPCookie (Util)
+
+/**
+ format cookie to string
+
+ @return cookieStringValue
+ */
+- (NSString *)kc_formatCookieString;
+
+@end
+
+@implementation NSHTTPCookie (Util)
+
+- (NSString *)kc_formatCookieString{
+    NSString *string = [NSString stringWithFormat:@"%@=%@;domain=%@;path=%@",
+                        self.name,
+                        self.value,
+                        self.domain,
+                        self.path ?: @"/"];
+    
+    if (self.secure) {
+        string = [string stringByAppendingString:@";secure=true"];
+    }
+    
+    return string;
+}
+
+@end
+
 @interface SmartJSWebViewProxy()
 {
     int _loadingCount;
@@ -323,6 +352,7 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
 
 #pragma mark - WKNavigationDelegate
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    NSMutableDictionary<NSString *, NSString *> *requestHeaders = [navigationAction.request.allHTTPHeaderFields mutableCopy];
     
     NSMutableURLRequest *fixedRequest = [navigationAction.request isKindOfClass:[NSMutableURLRequest class]] ? (NSMutableURLRequest *)(navigationAction.request) : [navigationAction.request mutableCopy];
     
@@ -331,28 +361,40 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
         NSString* host = fixedRequest.URL.host;
         if([host isKindOfClass:[NSString class]] && [host length] > 0)
         {
-            NSMutableArray<NSHTTPCookie *>* resolvedCookies = [NSMutableArray<NSHTTPCookie *> array];
-            NSArray<NSHTTPCookie *> *cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies;
-            [cookies enumerateObjectsUsingBlock:^(NSHTTPCookie * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSMutableString *script = [NSMutableString string];
+            [script appendString:@"var cookieNames = document.cookie.split('; ').map(function(cookie) { return cookie.split('=')[0] } );\n"];
+            NSMutableArray<NSHTTPCookie *>* requestCookies = [NSMutableArray<NSHTTPCookie *> array];
+            NSArray<NSHTTPCookie *> *localCookies = [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies;
+            [localCookies enumerateObjectsUsingBlock:^(NSHTTPCookie * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 if([host rangeOfString:obj.domain].location != NSNotFound)
                 {
-                    [resolvedCookies addObject:obj];
+                    [requestCookies addObject:obj];
+                    [script appendFormat:@"if (cookieNames.indexOf('%@') == -1) { document.cookie='%@'; };\n", obj.name, obj.kc_formatCookieString];
                 }
             }];
             
-            if (@available(iOS 11.0, *)) {
-                [resolvedCookies enumerateObjectsUsingBlock:^(NSHTTPCookie * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (@available(iOS 11.0, *))
+            {
+                [requestCookies enumerateObjectsUsingBlock:^(NSHTTPCookie * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     WKHTTPCookieStore *cookieStore = [WKWebsiteDataStore defaultDataStore].httpCookieStore;
                     [cookieStore setCookie:obj completionHandler:nil];
                 }];
-               }
-               else{
-                   NSDictionary<NSString *, NSString *> * resolvedSharedHeaderFields = [NSHTTPCookie requestHeaderFieldsWithCookies:resolvedCookies];
-                   NSMutableDictionary<NSString *, NSString *> *originHeaders = navigationAction.request.allHTTPHeaderFields.mutableCopy;
-                   [originHeaders setValuesForKeysWithDictionary:resolvedSharedHeaderFields];
-                   fixedRequest.allHTTPHeaderFields = originHeaders;
-                   NSLog(@"originalHeaders:%@", originHeaders);
-               }
+            }
+            else
+            {
+                NSDictionary<NSString *, NSString *> * resolvedLocalHeaderFields = [NSHTTPCookie requestHeaderFieldsWithCookies:requestCookies];
+                NSString* resolvedCookieString = [resolvedLocalHeaderFields objectForKey:@"Cookie"];
+                if(resolvedCookieString && (![requestHeaders objectForKey:@"Cookie"] || [[requestHeaders objectForKey:@"Cookie"] rangeOfString:resolvedCookieString].location == NSNotFound))
+                {
+                    [requestHeaders setValuesForKeysWithDictionary:resolvedLocalHeaderFields];
+                    fixedRequest.allHTTPHeaderFields = requestHeaders;
+                    WKUserScript * cookieScript = [[WKUserScript alloc] initWithSource:script injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
+                    [webView.configuration.userContentController addUserScript:cookieScript];
+                    [webView loadRequest:fixedRequest];
+                    decisionHandler(WKNavigationActionPolicyCancel);
+                    return;
+                }
+            }
         }
     }
     
@@ -505,7 +547,30 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
         [self.realDelegate webView:webView runJavaScriptAlertPanelWithMessage:message initiatedByFrame:frame completionHandler:completionHandler];
         return;
     }
-    completionHandler();
+    SmartJSWebView *jsWebView = (SmartJSWebView*)[webView superview];
+    if(![jsWebView isKindOfClass:[SmartJSWebView class]])
+    {
+        completionHandler();
+        return;
+    }
+    UIViewController *viewController = nil;
+    UIResponder *responder = jsWebView;
+    while ((responder = [responder nextResponder])){
+        if ([responder isKindOfClass: [UIViewController class]]){
+            viewController = (UIViewController *)responder;
+            break;
+        }
+    }
+    if(!viewController)
+    {
+        completionHandler();
+        return;
+    }
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:message?:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:([UIAlertAction actionWithTitle:NSLocalizedString(@"Confirm", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler();
+    }])];
+    [viewController presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL result))completionHandler

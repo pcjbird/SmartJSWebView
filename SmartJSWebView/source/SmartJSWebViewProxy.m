@@ -324,6 +324,38 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
 #pragma mark - WKNavigationDelegate
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     
+    NSMutableURLRequest *fixedRequest = [navigationAction.request isKindOfClass:[NSMutableURLRequest class]] ? (NSMutableURLRequest *)(navigationAction.request) : [navigationAction.request mutableCopy];
+    
+    if(fixedRequest)
+    {
+        NSString* host = fixedRequest.URL.host;
+        if([host isKindOfClass:[NSString class]] && [host length] > 0)
+        {
+            NSMutableArray<NSHTTPCookie *>* resolvedCookies = [NSMutableArray<NSHTTPCookie *> array];
+            NSArray<NSHTTPCookie *> *cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies;
+            [cookies enumerateObjectsUsingBlock:^(NSHTTPCookie * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if([host rangeOfString:obj.domain].location != NSNotFound)
+                {
+                    [resolvedCookies addObject:obj];
+                }
+            }];
+            
+            if (@available(iOS 11.0, *)) {
+                [resolvedCookies enumerateObjectsUsingBlock:^(NSHTTPCookie * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    WKHTTPCookieStore *cookieStore = [WKWebsiteDataStore defaultDataStore].httpCookieStore;
+                    [cookieStore setCookie:obj completionHandler:nil];
+                }];
+               }
+               else{
+                   NSDictionary<NSString *, NSString *> * resolvedSharedHeaderFields = [NSHTTPCookie requestHeaderFieldsWithCookies:resolvedCookies];
+                   NSMutableDictionary<NSString *, NSString *> *originHeaders = navigationAction.request.allHTTPHeaderFields.mutableCopy;
+                   [originHeaders setValuesForKeysWithDictionary:resolvedSharedHeaderFields];
+                   fixedRequest.allHTTPHeaderFields = originHeaders;
+                   NSLog(@"originalHeaders:%@", originHeaders);
+               }
+        }
+    }
+    
     if(self.realDelegate && [self.realDelegate respondsToSelector:@selector(webView:decidePolicyForNavigationAction:decisionHandler:)])
     {
         [self.realDelegate webView:webView decidePolicyForNavigationAction:navigationAction decisionHandler:decisionHandler];

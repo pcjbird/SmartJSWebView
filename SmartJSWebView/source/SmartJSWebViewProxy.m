@@ -366,7 +366,7 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
             NSMutableArray<NSHTTPCookie *>* requestCookies = [NSMutableArray<NSHTTPCookie *> array];
             NSArray<NSHTTPCookie *> *localCookies = [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies;
             [localCookies enumerateObjectsUsingBlock:^(NSHTTPCookie * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                if([host rangeOfString:obj.domain].location != NSNotFound)
+                if([host hasSuffix:obj.domain])
                 {
                     [requestCookies addObject:obj];
                     [script appendFormat:@"if (cookieNames.indexOf('%@') == -1) { document.cookie='%@'; };\n", obj.name, obj.kc_formatCookieString];

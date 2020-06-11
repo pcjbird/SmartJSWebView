@@ -249,6 +249,18 @@
 
 -(UIScrollView *)scrollView
 {
+    if([self.webView isKindOfClass:[WKWebView class]])
+    {
+        NSArray<UIView*>* subViews = [self.webView subviews];
+        if([subViews count] > 0)
+        {
+            UIScrollView* subView = [subViews firstObject];
+            if([subView isKindOfClass:[UIScrollView class]])
+            {
+                return subView;
+            }
+        }
+    }
     return nil;
 }
 

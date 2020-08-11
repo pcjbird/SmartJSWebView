@@ -42,7 +42,9 @@
     &gt; [CTRL] + ARROW LEFT  : Move window left
   </code>
   <button onclick="api.copyToClipboard();" title="复制文字到剪贴板">复制文字到剪贴板(UIWebView + WKWebView)</button>
-  <button onclick="createSecretId();" title="创建secretId">创建secretId(UIWebView + WKWebView)</button>
+  <button onclick="createSecretId();" title="创建secretId">创建secretId(WKWebView)</button>
+  <button onclick="getLoginInfo();" title="getLoginInfo">获取登录信息(WKWebView)</button>
+  <button onclick="getDeviceInfo();" title="getDeviceInfo">获取设备信息(WKWebView)</button>
   <!--<button onclick="api.setWebViewTitle();" title="">设置网页标题(UIWebView + WKWebView)</button>
   <button onclick="api.login();" title="">调用登录窗口(UIWebView + WKWebView)</button>
   <button onclick="api.logout();" title="">调用登出(UIWebView + WKWebView)</button>
@@ -94,7 +96,27 @@
     }
   
   function createSecretId() {
-      window.SmartJSDemoInterface.createSecretId()
+      window.FreeStoreInterface.createSecretId()
+      .done(function(item){
+          Toast(item, 2000);
+      })
+      .fail(function(){
+          Toast("调用失败", 2000);
+      });
+  }
+  
+  function getLoginInfo() {
+      window.FreeStoreInterface.getLoginInfo()
+      .done(function(item){
+          Toast(item, 2000);
+      })
+      .fail(function(){
+          Toast("调用失败", 2000);
+      });
+  }
+  
+  function getDeviceInfo() {
+      window.FreeStoreInterface.getDeviceInfo()
       .done(function(item){
           Toast(item, 2000);
       })

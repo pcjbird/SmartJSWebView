@@ -131,9 +131,10 @@
       Toast(result, 2000);
   }
   
-  function getDeviceInfoAction() {
+  async function getDeviceInfoAction() {
       try{
        let response = await window.FreeStoreInterface.getDeviceInfo()
+       Toast(response, 2000);
        return response
       }
       catch(e)

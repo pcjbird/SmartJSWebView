@@ -133,7 +133,8 @@
   
   async function getDeviceInfoAction() {
       try{
-       return await window.FreeStoreInterface.getDeviceInfo().done()
+       let response = await window.FreeStoreInterface.getDeviceInfo()
+       return response
       }
       catch(e)
       {

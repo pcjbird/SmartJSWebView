@@ -134,7 +134,6 @@
   function getDeviceInfoAction() {
       var result = undefined;
       var locked = true;
-      var timeout = 5000;
       window.FreeStoreInterface.getDeviceInfo()
       .done(function(item){
           result = item;
@@ -144,9 +143,9 @@
           result = "调用失败";
           locked = false;
       });
-      while(locked && timeout > 0)
+      while(locked)
       {
-          timeout--;
+          
       }
       return result;
   }

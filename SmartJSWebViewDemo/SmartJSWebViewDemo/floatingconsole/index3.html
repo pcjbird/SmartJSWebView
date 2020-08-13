@@ -132,7 +132,13 @@
   }
   
   async function getDeviceInfoAction() {
-      return await window.FreeStoreInterface.getDeviceInfo()
+      try{
+       return await window.FreeStoreInterface.getDeviceInfo().done()
+      }
+      catch(e)
+      {
+          return "调用失败"
+      }
   }
   </script>
 </body>

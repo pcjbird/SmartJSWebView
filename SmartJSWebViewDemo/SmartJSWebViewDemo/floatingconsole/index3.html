@@ -45,7 +45,6 @@
   <button onclick="createSecretId();" title="创建secretId">创建secretId(WKWebView)</button>
   <button onclick="getLoginInfo();" title="getLoginInfo">获取登录信息(WKWebView)</button>
   <button onclick="getDeviceInfo();" title="getDeviceInfo">获取设备信息(WKWebView)</button>
-  <button onclick="getDeviceInfoSync();" title="getDeviceInfo">同步获取设备信息(WKWebView)</button>
   <!--<button onclick="api.setWebViewTitle();" title="">设置网页标题(UIWebView + WKWebView)</button>
   <button onclick="api.login();" title="">调用登录窗口(UIWebView + WKWebView)</button>
   <button onclick="api.logout();" title="">调用登出(UIWebView + WKWebView)</button>
@@ -126,29 +125,6 @@
       });
   }
   
-  function getDeviceInfoSync() {
-      var result = getDeviceInfoAction();
-      Toast(result, 2000);
-  }
-  
-  function getDeviceInfoAction() {
-      var result = undefined;
-      var locked = true;
-      window.FreeStoreInterface.getDeviceInfo()
-      .done(function(item){
-          result = item;
-          locked = false;
-      })
-      .fail(function(){
-          result = "调用失败";
-          locked = false;
-      });
-      while(locked)
-      {
-          
-      }
-      return result;
-  }
   </script>
 </body>
 <script>

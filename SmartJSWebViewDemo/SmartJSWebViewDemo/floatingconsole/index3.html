@@ -134,7 +134,7 @@
   function getDeviceInfoAction() {
       var result = undefined;
       var locked = true;
-      var timeout = 300;
+      var timeout = 5000;
       window.FreeStoreInterface.getDeviceInfo()
       .done(function(item){
           result = item;

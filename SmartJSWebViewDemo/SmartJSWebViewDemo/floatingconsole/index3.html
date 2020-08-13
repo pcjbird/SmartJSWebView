@@ -127,20 +127,28 @@
   }
   
   function getDeviceInfoSync() {
-      var result = getDeviceInfoAction()
+      var result = getDeviceInfoAction();
       Toast(result, 2000);
   }
   
-  async function getDeviceInfoAction() {
-      try{
-       let response = await window.FreeStoreInterface.getDeviceInfo()
-       Toast(response, 2000);
-       return response
-      }
-      catch(e)
+  function getDeviceInfoAction() {
+      var result = undefined;
+      var locked = true;
+      var timeout = 300;
+      window.FreeStoreInterface.getDeviceInfoAction()
+      .done(function(item){
+          result = item;
+          locked = false;
+      })
+      .fail(function(){
+          result = "调用失败";
+          locked = false;
+      });
+      while(locked && timeout > 0)
       {
-          return "调用失败"
+          timeout--;
       }
+      return result;
   }
   </script>
 </body>

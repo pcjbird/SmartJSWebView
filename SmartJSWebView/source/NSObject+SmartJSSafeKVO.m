@@ -43,7 +43,7 @@ static dispatch_semaphore_t sKVOProxySemaphore;
 - (void)wvsafe_addObserver:(NSObject *)observer
             forKeyPath:(NSString *)keyPath
                options:(NSKeyValueObservingOptions)options
-               context:(void *)context {
+               context:(void *_Nullable)context {
     if (!observer || !keyPath.length ||
         ![observer respondsToSelector:@selector(observeValueForKeyPath:ofObject:change:context:)]) {
         return;

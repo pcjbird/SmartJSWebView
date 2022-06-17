@@ -194,7 +194,7 @@
     self.delegate = self.proxy;
 }
 
--(void)setDelegate:(id<WKScriptMessageHandler,WKNavigationDelegate,WKUIDelegate,SmartJSContextDelegate>)delegate
+-(void)setDelegate:(id<WKScriptMessageHandler,WKNavigationDelegate,WKUIDelegate,SmartJSContextDelegate, SmartJSWebViewDelegate>)delegate
 {
     if(_delegate == delegate) return;
     if (delegate != self.proxy)
@@ -256,7 +256,7 @@
         NSArray<UIView*>* subViews = [self.webView subviews];
         if([subViews count] > 0)
         {
-            UIScrollView* subView = [subViews firstObject];
+            UIScrollView* subView = (UIScrollView*)[subViews firstObject];
             if([subView isKindOfClass:[UIScrollView class]])
             {
                 return subView;

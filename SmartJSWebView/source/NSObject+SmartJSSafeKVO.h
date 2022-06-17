@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)wvsafe_addObserver:(NSObject *)observer
             forKeyPath:(NSString *)keyPath
                options:(NSKeyValueObservingOptions)options
-               context:(void *)context;
+               context:(void * _Nullable)context;
 
 - (void)wvsafe_removeObserver:(NSObject *)observer
                forKeyPath:(NSString *)keyPath

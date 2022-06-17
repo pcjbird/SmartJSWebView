@@ -594,5 +594,14 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
     completionHandler(@"");
 }
 
-
+#pragma mark - SmartJSWebViewDelegate
+-(void) didTitleChanged:(NSString*_Nullable) title
+{
+    NSLog(@"title changed:%@.", title);
+    if(self.realDelegate && [self.realDelegate respondsToSelector:@selector(didTitleChanged:)])
+    {
+        [self.realDelegate didTitleChanged: title];
+        return;
+    }
+}
 @end

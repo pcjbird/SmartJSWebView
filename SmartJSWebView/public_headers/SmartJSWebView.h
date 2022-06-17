@@ -8,6 +8,9 @@
 //  框架名称:SmartJSWebView
 //  框架功能:支持 H5 页面通过 JavaScript 与 Native App 交互的 WebView。
 //  修改记录:
+//     pcjbird    2022-06-17  Version:2.0.8 Build:202206170001
+//                            1.add webtitle changed callback
+//
 //     pcjbird    2020-06-11  Version:2.0.7 Build:202006110001
 //                            1.try return WKWebView's UIScrollView
 //
@@ -95,6 +98,14 @@ FOUNDATION_EXPORT const unsigned char SmartJSWebViewVersionString[];
 #import <SmartJSWebView/SmartJSWebProgressView.h>
 #import <SmartJSWebView/SmartJSContextDelegate.h>
 
+@protocol SmartJSWebViewDelegate <NSObject>
+
+@optional
+
+-(void) didTitleChanged:(NSString*_Nullable) title;
+
+@end
+
 
 @interface SmartJSWebView : UIView
 
@@ -116,7 +127,7 @@ FOUNDATION_EXPORT const unsigned char SmartJSWebViewVersionString[];
 /**
  *@brief  代理
  */
-@property (nullable, nonatomic, weak) id<WKNavigationDelegate, WKUIDelegate,SmartJSContextDelegate> delegate;
+@property (nullable, nonatomic, weak) id<WKNavigationDelegate, WKUIDelegate,SmartJSContextDelegate, SmartJSWebViewDelegate> delegate;
 
 /**
  *@brief  进度条代理

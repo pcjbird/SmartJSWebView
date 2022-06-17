@@ -64,6 +64,7 @@
     if([self.webView isKindOfClass:[WKWebView class]])
     {
         [((WKWebView*)self.webView) wvsafe_removeObserver:self forKeyPath:@"estimatedProgress"];
+        [((WKWebView*)self.webView) wvsafe_removeObserver:self forKeyPath:@"title"];
     }
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -207,6 +208,7 @@
     [((WKWebView*)self.webView).configuration.userContentController addScriptMessageHandler:self.proxy name:@"SmartJS"];
     [self.proxy injectUserScript:self.webView];
     [((WKWebView*)self.webView) wvsafe_addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:NULL];
+    [((WKWebView*)self.webView) wvsafe_addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
 
     _delegate = delegate;
 }
@@ -336,6 +338,14 @@
         if([webView isKindOfClass:[WKWebView class]] && self.proxy)
         {
             [self.proxy setProgress:webView.estimatedProgress];
+        }
+    }
+    else if ([keyPath isEqualToString:@"title"])
+    {
+        WKWebView *webView = object;
+        if([webView isKindOfClass:[WKWebView class]] && self.proxy)
+        {
+            [self.proxy didTitleChanged:[webView title]];
         }
     }
 }

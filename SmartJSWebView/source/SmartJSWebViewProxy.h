@@ -11,11 +11,12 @@
 #import "SmartJSContextDelegate.h"
 #import "SmartJSWebViewProgressDelegate.h"
 #import "SmartJSWebSecurityProxy.h"
+#import "SmartJSWebView.h"
 
-@interface SmartJSWebViewProxy : NSObject<WKScriptMessageHandler, WKNavigationDelegate, WKUIDelegate,SmartJSContextDelegate>
+@interface SmartJSWebViewProxy : NSObject<WKScriptMessageHandler, WKNavigationDelegate, WKUIDelegate,SmartJSContextDelegate, SmartJSWebViewDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary* _Nullable javascriptInterfaces;
-@property (nullable, nonatomic, weak) id<WKNavigationDelegate, WKUIDelegate,SmartJSContextDelegate> realDelegate;
+@property (nullable, nonatomic, weak) id<WKNavigationDelegate, WKUIDelegate,SmartJSContextDelegate, SmartJSWebViewDelegate> realDelegate;
 @property (nullable, nonatomic, weak) id<SmartJSWebViewProgressDelegate> progressDelegate;
 @property (nullable, nonatomic, weak) id<SmartJSWebSecurityProxy> securityProxy;
 

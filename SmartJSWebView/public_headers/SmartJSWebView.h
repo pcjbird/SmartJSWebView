@@ -8,6 +8,9 @@
 //  框架名称:SmartJSWebView
 //  框架功能:支持 H5 页面通过 JavaScript 与 Native App 交互的 WebView。
 //  修改记录:
+//     pcjbird    2026-03-13  Version:2.1.0 Build:20260313001
+//                            1.bug fixed
+//
 //     pcjbird    2022-06-17  Version:2.0.9 Build:202206170002
 //                            1.bug fixed
 //
@@ -204,6 +207,11 @@ FOUNDATION_EXPORT const unsigned char SmartJSWebViewVersionString[];
  * Inject javascript model to webview.
  */
 - (void) addJavascriptInterfaces:(nonnull NSObject*) interface WithName:(nonnull NSString*) name;
+
+/*!
+ * Remove all javascript interfaces.
+ */
+- (void) removeAllJavascriptInterfaces;
 
 /*!
  * Return the webview title.

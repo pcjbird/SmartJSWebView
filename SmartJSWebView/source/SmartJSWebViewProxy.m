@@ -140,6 +140,14 @@ static const float SmartJSWebViewProgressFinalProgressValue = 0.9f;
     [self.javascriptInterfaces setValue:interface forKey:name];
 }
 
+- (void) removeAllJavascriptInterfaces
+{
+    if(self.javascriptInterfaces)
+    {
+        [self.javascriptInterfaces removeAllObjects];
+    }
+}
+
 - (void) injectUserScript:(WKWebView*)webView
 {
     NSString * functionjs = [NSString stringWithContentsOfFile:[SDK_BUNDLE pathForResource:@"function-inject" ofType:@"js"] encoding:NSUTF8StringEncoding error:nil];

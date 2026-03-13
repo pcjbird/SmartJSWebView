@@ -23,6 +23,6 @@
 
 - (void) injectUserScript:(WKWebView*_Nonnull)webView;
 - (void) addJavascriptInterfaces:(NSObject*_Nonnull) interface WithName:(NSString*_Nonnull) name;
-
+- (void) removeAllJavascriptInterfaces;
 - (void)setProgress:(float)progress;
 @end

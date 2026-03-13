@@ -4,13 +4,13 @@ Pod::Spec.new do |s|
     s.description      = <<-DESC
     支持 H5 页面通过 JavaScript 与 Native App 交互的 WebView，支持白名单功能。
     DESC
-    s.version      = '2.0.9'
+    s.version      = '2.1.0'
     s.license      = { :type => 'MIT', :file => 'LICENSE' }
     s.authors      = { 'pcjbird' => 'pcjbird@hotmail.com' }
     s.social_media_url = 'http://www.lessney.com'
     s.homepage     = 'https://github.com/pcjbird/SmartJSWebView'
-    s.platform     = :ios, '8.0'
-    s.ios.deployment_target = '8.0'
+    s.platform     = :ios, '11.0'
+    s.ios.deployment_target = '11.0'
     s.source       = { :git => 'https://github.com/pcjbird/SmartJSWebView.git', :tag => s.version.to_s }
 
     s.requires_arc = true

@@ -66,7 +66,7 @@
         [((WKWebView*)self.webView) wvsafe_removeObserver:self forKeyPath:@"estimatedProgress"];
         [((WKWebView*)self.webView) wvsafe_removeObserver:self forKeyPath:@"title"];
     }
-    
+    [self removeAllJavascriptInterfaces];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -106,6 +106,17 @@
             __weak typeof (self) weakSelf = self;
             [interfaceProtocol registerWebView:weakSelf];
         }
+    }
+}
+
+/*!
+ * Remove all javascript interfaces.
+ */
+- (void) removeAllJavascriptInterfaces
+{
+    if(self.proxy)
+    {
+        [self.proxy removeAllJavascriptInterfaces];
     }
 }
 
